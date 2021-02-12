@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>MY DENTIS</title>
 
     <!-- Bootstrap -->
     <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,11 +48,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="./production/images/alex.jpg" alt="..." class="img-circle profile_img">
+                <img src="./production/images/gustavo.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
-                <h2>Alexis Gómez</h2>
+                <h2>Gustavo Angel</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -66,7 +66,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index">Munu principal</a></li>
+                      <li><a href="menuprincipal">Munu principal</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Administrador <span class="fa fa-chevron-down"></span></a>
@@ -78,7 +78,7 @@
                   <li><a><i class="fa fa-edit"></i>Pacientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       
-                      <li><a href="./production/formulario.html">Alta pacientes</a></li>
+                      <li><a href="altapacientes">Alta pacientes</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i>Odontologos<span class="fa fa-chevron-down"></span></a>
@@ -208,7 +208,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="./production/images/alex.jpg" alt="">Alexis Gómez
+                    <img src="./production/images/gustavo.jpg" alt="">Alexis Gómez
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>

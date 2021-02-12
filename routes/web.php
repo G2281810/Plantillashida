@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PacientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/inicio',function(){
-    return view('plantilla');
-});
-
-Route::get('/index',function(){
-    return view('index');
-});
+Route::get('/altapacientes',[PacientesController::class,'altapacientes'])->name('altapacientes');
+Route::get('/',[PacientesController::class,'index'])->name('index');
+Route::get('/menuprincipal',[PacientesController::class,'index'])->name('index');
+Route::post('/guardarpaciente',[PacientesController::class,'guardarpaciente'])->name('guardarpaciente');
