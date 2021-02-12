@@ -24,8 +24,10 @@
                 <label class="col-form-label col-md-5 col-sm-5  label-align">Nombre:<span
                     class="required">*</span></label>
                 <div class="col-md-5 col-sm-5">
-                  <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name"
-                    placeholder="" required="required" />
+                  <input type="text" name="nombre" id="nombre" value="{{old('nombre')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('nombre'))
+                   <p class='text-danger'>{{$errors->first('nombre')}}</p>
+                  @endif
                 </div>
               </div>
               <!--apellido paterno -->
@@ -33,16 +35,21 @@
               <label class="col-form-label col-md-5 col-sm-5  label-align">Apellido Paterno:<span
                   class="required">*</span></label>
               <div class="col-md-5 col-sm-5">
-                <input class="form-control" class='optional' name="" data-validate-length-range="5,15"
-                  type="text" /></div>
+                <input type="text" name="apellidop" id="apellidop" value="{{old('apellidop')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('apellidop'))
+                   <p class='text-danger'>{{$errors->first('apellidop')}}</p>
+                  @endif
+              </div>
             </div>
             <!--apellido materno-->
             <div class="field item form-group">
               <label class="col-form-label col-md-5 col-sm-5  label-align">Apellido Materno:<span
                   class="required">*</span></label>
               <div class="col-md-5 col-sm-5">
-                <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name"
-                  placeholder="" required="required" />
+                <input type="text" name="apellidom" id="apellidom" value="{{old('apellidom')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('apellidom'))
+                   <p class='text-danger'>{{$errors->first('apellidom')}}</p>
+                  @endif
               </div>
             </div>
             <!--sexo-->
@@ -65,8 +72,10 @@
                 <label class="col-form-label col-md-5 col-sm-5  label-align">Edad:<span
                     class="required">*</span></label>
                 <div class="col-md-5 col-sm-5">
-                  <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="edad"
-                    placeholder="" />
+                  <input type="text" name="edad" id="edad" value="{{old('edad')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('edad'))
+                   <p class='text-danger'>{{$errors->first('edad')}}</p>
+                  @endif
                 </div>
               </div>
 
@@ -86,18 +95,25 @@
             </div>
             <!--Telefono-->
             <div class="field item form-group">
-                <label class="col-form-label col-md-5 col-sm-5  label-align">Telefono:<span
-                    class="required">*</span></label>
-                <div class="col-md-5 col-sm-5">
-                  <input class="form-control" class='optional' name="" data-validate-length-range="5,15"
-                    type="text" /></div>
+              <label class="col-form-label col-md-5 col-sm-5  label-align">Telefono:<span
+                  class="required">*</span></label>
+              <div class="col-md-5 col-sm-5">
+                <input type="text" name="telefono" id="telefono" value="{{old('telefono')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('telefono'))
+                   <p class='text-danger'>{{$errors->first('telefono')}}</p>
+                  @endif
               </div>
+            </div>
             <!--correo-->
             <div class="field item form-group">
                 <label class="col-form-label col-md-5 col-sm-5  label-align">Correo electronico:<span
                     class="required">*</span></label>
                 <div class="col-md-5 col-sm-5">
-                  <input class="form-control" name="email" class='email' required="required" type="email" /></div>
+                  <input type="text" name="correo" id="correo" value="{{old('correo')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('correo'))
+                   <p class='text-danger'>{{$errors->first('correo')}}</p>
+                  @endif
+                </div>
               </div>
               <!--pregunta-->
               <div class="item form-group">
@@ -118,8 +134,10 @@
             <div class="field item form-group">
                 <label class="col-form-label col-md-5 col-sm-5  label-align">¿Cuales son sus alergias?:</label>
                 <div class="col-md-5 col-sm-5">
-                  <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="alergias"
-                    placeholder="" required="required" />
+                  <input type="text" name="alergias" id="alergias" value="{{old('alergias')}}" class="form-control" placeholder="" tabindex="5">
+                  @if($errors->first('alergias'))
+                   <p class='text-danger'>{{$errors->first('alergias')}}</p>
+                  @endif
                 </div>
               </div>
 
