@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\pacientes;
 
 class PacientesController extends Controller
 {
@@ -27,6 +28,24 @@ class PacientesController extends Controller
             'alergias'=> 'regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/'
         ]);
         echo "Todo correcto";
+    }
+    public function eloquent()
+    {
+        $pacientes = new pacientes;
+        $pacientes ->idpaci = 2;
+        $pacientes ->nombre = "Gustavo";
+        $pacientes ->apellidop = "Santos";
+        $pacientes ->apellidom = "Clemente";
+        $pacientes ->sexo = "M";
+        $pacientes ->edad = 20;
+        $pacientes ->idtipossan=1;
+        $pacientes ->telefono="7291500635";
+        $pacientes ->correo="al221810743@gmail.com";
+        $pacientes ->preguntaale="Si";
+        $pacientes ->alergias="Al paracetamol";
+        $pacientes ->activo="SI";
+        $pacientes ->save();
+        return "Registro Creado exitosamente";
     }
 }
 

@@ -14,7 +14,7 @@ class Pacientes extends Migration
     public function up()
     {
         Schema::create('pacientes', function(Blueprint $table){
-            $table->increments('idpaci');
+            $table->Increments('idpaci');
             $table->string('nombre',40);
             $table->string('apellidop',40);
             $table->string('apellidom',40);
@@ -24,9 +24,9 @@ class Pacientes extends Migration
             $table->foreign('idtipossan')->references('idtipossan')->on('tipo_sangre');
             $table->string('telefono',10);
             $table->string('correo',40);
-            $table->string('preguntaale',1);
+            $table->string('preguntaale',2);
             $table->string('alergias',150);
-            $table->string('activo',1);
+            $table->string('activo',2);
             $table->rememberToken();
             $table->timestamps();
         });

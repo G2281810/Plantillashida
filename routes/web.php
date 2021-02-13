@@ -18,3 +18,4 @@ Route::get('/altapacientes',[PacientesController::class,'altapacientes'])->name(
 Route::get('/',[PacientesController::class,'index'])->name('index');
 Route::get('/menuprincipal',[PacientesController::class,'index'])->name('index');
 Route::post('/guardarpaciente',[PacientesController::class,'guardarpaciente'])->name('guardarpaciente');
+Route::get('/eloquent',[PacientesController::class,'eloquent'])->name('eloquent');
