@@ -14,14 +14,14 @@ class Pacientes extends Migration
     public function up()
     {
         Schema::create('pacientes', function(Blueprint $table){
-            $table->Increments('idpaci');
+            $table->Increments('idpaciente');
             $table->string('nombre',40);
             $table->string('apellidop',40);
             $table->string('apellidom',40);
             $table->string('sexo',1);
             $table->string('edad',3);
             $table->integer('idtipossan')->unsigned();
-            $table->foreign('idtipossan')->references('idtipossan')->on('tipo_sangre');
+            $table->foreign('idtipossan')->references('idtipossan')->on('tipo_sangres');
             $table->string('telefono',10);
             $table->string('correo',40);
             $table->string('preguntaale',2);

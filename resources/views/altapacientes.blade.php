@@ -13,9 +13,9 @@
                   class="required">*</span>
               </label>
               <div class="col-md-5 col-sm-5">
-                <input type="text" name="idpaci" id="idpaci" value="{{old('idpaci')}}" class="form-control" placeholder="Introduce clave paciente PAC-0001" tabindex="5">
-                @if($errors->first('idpaci'))
-                  <p class='text-danger'>{{$errors->first('idpaci')}}</p>
+                <input type="text" name="idpaciente" id="idpaciente" value="{{old('idpaciente')}}" class="form-control" placeholder="Introduce clave paciente PAC-0001" tabindex="5">
+                @if($errors->first('idpaciente'))
+                  <p class='text-danger'>{{$errors->first('idpaciente')}}</p>
                 @endif
               </div>
             </div>
@@ -84,13 +84,15 @@
               <label class="col-form-label col-md-5 col-sm-5 label-align">Tipo de sangre:<span
                 class="required">*</span></label>
               <div class="col-md-5 col-sm-5 ">
-                <select class="select2_group form-control">
-                  <option disabled="disabled" selected="selected">Selecciona una opcion</option>
-                  <option value="">A+</option>
-                  <option value="">A-</option>
-                  <option value="">B+</option>
-                  <option value="">B-</option>
+                <select class="select2_group form-control"name="idtipossan" id="inputtipossan_id">
+                  <option disabled="disabled" selected="selected" >Selecciona una opcion</option>
+                  @foreach($tipossan as $tipossan)
+                    <option value="{{$tipossan['idtipossan']}}">{{$tipossan['tipo']}}</option>
+                  @endforeach
                 </select>
+                @if($errors->first('idtipossan'))
+                   <p class='text-danger'>{{$errors->first('idtipossan')}}</p>
+                  @endif
               </div>
             </div>
             <!--Telefono-->
@@ -134,7 +136,7 @@
             <div class="field item form-group">
                 <label class="col-form-label col-md-5 col-sm-5  label-align">¿Cuales son sus alergias?:</label>
                 <div class="col-md-5 col-sm-5">
-                  <input type="text" name="alergias" id="alergias" value="{{old('alergias')}}" class="form-control" placeholder="" tabindex="5">
+                  <input type="text" name="alergias" id="alergias" value="{{old('alergias')}}" class="form-control" placeholder="Si no tiene alergias escribir 'NO APLICA'" tabindex="5">
                   @if($errors->first('alergias'))
                    <p class='text-danger'>{{$errors->first('alergias')}}</p>
                   @endif

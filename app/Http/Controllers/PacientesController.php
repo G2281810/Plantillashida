@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\pacientes;
-
+use App\Models\tipo_sangres;
 class PacientesController extends Controller
 {
     public function altapacientes()
     {
-        return view('altapacientes');
+        $tipossan = tipo_sangres::all();
+        return view('altapacientes', compact('tipossan'));
     }
     public function index()
     {
@@ -18,13 +19,14 @@ class PacientesController extends Controller
     public function guardarpaciente(Request $request)
     {
         $this->validate($request,[
-            'idpaci'=> 'required|regex:/^[P][A][C][-][0-9]{4}$/',
+            'idpaciente'=> 'required|regex:/^[P][A][C][-][0-9]{4}$/',
             'nombre'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
             'apellidop'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
             'apellidom'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
             'edad'=> 'required|regex:/^[0-99]{2}+$/',
             'telefono'=> 'required|regex:/^[0-9]{10}$/',
             'correo'=> 'required|email',
+            'idtipossan'=>'required',
             'alergias'=> 'regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/'
         ]);
         echo "Todo correcto";

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TipoSangre extends Migration
+class TipoSangres extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class TipoSangre extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_sangre', function(Blueprint $table){
+        Schema::create('tipo_sangres', function(Blueprint $table){
             $table->increments('idtipossan');
             $table->string('tipo',5);
             $table->rememberToken();
@@ -28,6 +28,6 @@ class TipoSangre extends Migration
      */
     public function down()
     {
-        Schema::drop('tipo_sangre');
+        Schema::drop('tipo_sangres');
     }
 }
