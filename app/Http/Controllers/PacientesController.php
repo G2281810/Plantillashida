@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\pacientes;
 use App\Models\tipo_sangres;
+
 class PacientesController extends Controller
 {
     public function altapacientes()
     {
         $tipossan = tipo_sangres::all();
-        return view('altapacientes', compact('tipossan'));
+        $consulta = pacientes::orderBy('idpaciente','DESC')->take(1)->get();
+        $cuantos = count($consulta);
+    if($cuantos==0)
+    {
+      $idesigue=1;
+    }
+    else
+    {
+      $idesigue = $consulta[0]->ide + 1;
+    }
+        return view('pacientes.altapacientes', compact('tipossan'))
+        ->with('idsigue',$idesigue);
     }
     public function index()
     {
@@ -19,7 +31,6 @@ class PacientesController extends Controller
     public function guardarpaciente(Request $request)
     {
         $this->validate($request,[
-            'idpaciente'=> 'required|regex:/^[P][A][C][-][0-9]{4}$/',
             'nombre'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
             'apellidop'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
             'apellidom'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
@@ -27,7 +38,7 @@ class PacientesController extends Controller
             'telefono'=> 'required|regex:/^[0-9]{10}$/',
             'correo'=> 'required|email',
             'idtipossan'=>'required',
-            'alergias'=> 'regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/'
+            'alergias'=> 'regex:/^[A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/'
         ]);
         echo "Todo correcto";
     }
@@ -48,6 +59,10 @@ class PacientesController extends Controller
         $pacientes ->activo="SI";
         $pacientes ->save();
         return "Registro Creado exitosamente";
+    }
+     public function reporte()
+    {
+        return view('pacientes.reporte');
     }
 }
 

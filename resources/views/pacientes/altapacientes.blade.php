@@ -13,7 +13,7 @@
                   class="required">*</span>
               </label>
               <div class="col-md-5 col-sm-5">
-                <input type="text" name="idpaciente" id="idpaciente" value="{{old('idpaciente')}}" class="form-control" placeholder="Introduce clave paciente PAC-0001" tabindex="5">
+                <input type="text" name="idpaciente" id="idpaciente" value="{{$idsigue}}"  readonly='readonly' class="form-control" placeholder="Introduce clave paciente" tabindex="5">
                 @if($errors->first('idpaciente'))
                   <p class='text-danger'>{{$errors->first('idpaciente')}}</p>
                 @endif
@@ -52,21 +52,21 @@
                   @endif
               </div>
             </div>
-            <!--sexo-->
-            <div class="item form-group">
-              <label class="col-form-label col-md-5 col-sm-5 label-align">Sexo:<span
-                class="required">*</span></label>
-              <div class="col-md-5 col-sm-5 ">
-                <div id="gender" class="btn-group" data-toggle="buttons">
-                  <p>
-                    Masculino
-                    <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required />
-                    Femenino
-                    <input type="radio" class="flat" name="gender" id="genderF" value="F" />
-                  </p>
-                </div>
-              </div>
+             <!--sexo-->
+        <div class="item form-group">
+          <label class="col-form-label col-md-5 col-sm-5 label-align">Sexo:<span
+            class="required">*</span></label>
+          <div class="col-md-5 col-sm-5 ">
+            <div id="gender" class="btn-group" data-toggle="buttons">
+              <p>
+                Masculino
+                <input type="radio" class="flat" id="sexo1" name="sexo" value = "M"  checked="" required />
+                Femenino
+                <input type="radio" class="flat" id="sexo2" name="sexo" value = "F"/>
+              </p>
             </div>
+          </div>
+        </div>
             <!--edad-->
             <div class="field item form-group">
                 <label class="col-form-label col-md-5 col-sm-5  label-align">Edad:<span
@@ -144,20 +144,20 @@
               </div>
 
             <!--Activo-->
-            <div class="item form-group">
-                <label class="col-form-label col-md-5 col-sm-5 label-align">Activo:<span
-                  class="required">*</span></label>
-                <div class="col-md-5 col-sm-5 ">
-                  <div id="gender" class="btn-group" data-toggle="buttons">
-                    <p>
-                      Si
-                      <input type="radio" class="flat" name="genderss" id="gendersia" value="Sia" checked="" required />
-                      No
-                      <input type="radio" class="flat" name="genderss" id="gendernoa" value="Noa"/>
-                    </p>
-                  </div>
-                </div>
+          <div class="item form-group">
+            <label class="col-form-label col-md-5 col-sm-5 label-align">Activo:<span
+              class="required">*</span></label>
+            <div class="col-md-5 col-sm-5 ">
+              <div id="gender" class="btn-group" data-toggle="buttons">
+                <p>
+                  Si
+                  <input type="radio" class="flat" id="activo1" name="checked" value = "s"  checked="" required />
+                  No
+                  <input type="radio" class="flat" id="activo2" name="checked" value = "n"/>
+                </p>
               </div>
+            </div>
+          </div>
               <!--botones-->
               <div class="field item form-group">
               <label class="col-form-label col-md-5 col-sm-5 label-align"></label>
