@@ -74,17 +74,17 @@
                   <button type="button" class="btn btn-success">Modificar</button>
                 </a>
                 @if($c->deleted_at)
-                 <a>
-                   <button type="button" class="btn btn-success">Activar</button>
-                 </a>
-                 <a>
-                  <button type="button" class="btn btn-danger">Eliminar</button>
+                <a href="{{route('activausuario',['idusuario'=>$c->idusuario])}}"> 
+                  <button type="button" class="btn btn-warning">Activar</button>
                 </a>
-                 @else
-                 <a>
-                   <button type="button" class="btn btn-danger">Desctivar</button></td>
-                 </a>
-                 @endif
+                <a href="{{route('borrarusuario',['idusuario'=>$c->idusuario])}}"> 
+                  <button type="button" class="btn btn-danger">Borrar</button>
+                </a>
+                @else
+                <a href="{{route('desactivausuario',['idusuario'=>$c->idusuario])}}"> 
+                  <button type="button" class="btn btn-danger">Desactivar</button>
+                </a>
+                @endif
              </tr>
            @endforeach
                         </tbody>

@@ -72,18 +72,18 @@
                 <a> 
                   <button type="button" class="btn btn-success">Modificar</button>
                 </a>
-                @if($c->deleted_at)
-                 <a>
-                   <button type="button" class="btn btn-success">Activar</button>
-                 </a>
-                 <a>
-                  <button type="button" class="btn btn-danger">Eliminar</button>
+                 @if($c->deleted_at)
+                <a href="{{route('activaconestudio',['idces'=>$c->idces])}}"> 
+                  <button type="button" class="btn btn-warning">Activar</button>
                 </a>
-                 @else
-                 <a>
-                   <button type="button" class="btn btn-danger">Desctivar</button></td>
-                 </a>
-                 @endif
+                <a href="{{route('borrarconestudio',['idces'=>$c->idces])}}"> 
+                  <button type="button" class="btn btn-danger">Borrar</button>
+                </a>
+                @else
+                <a href="{{route('desactivaconestudio',['idces'=>$c->idces])}}"> 
+                  <button type="button" class="btn btn-danger">Desactivar</button>
+                </a>
+                @endif
              </tr>
            @endforeach
                         </tbody>

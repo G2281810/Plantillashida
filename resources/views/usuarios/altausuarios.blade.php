@@ -12,9 +12,9 @@
              class="required">*</span>
             </label>
            <div class="col-md-5 col-sm-5">
-             <input type="text" name="idusuarios" id="idusuarios" value="{{$idsigue}}"  readonly='readonly'  class="form-control" placeholder="Introduce clave del usuario" tabindex="5">
-             @if($errors->first('idusuarios'))
-              <p class='text-danger'>{{$errors->first('idusuarios')}}</p>
+             <input type="text" name="idusuario" id="idusuario" value="{{$idsigue}}"  readonly='readonly'  class="form-control" placeholder="Introduce clave del usuario" tabindex="5">
+             @if($errors->first('idusuario'))
+              <p class='text-danger'>{{$errors->first('idusuario')}}</p>
              @endif
            </div>
           </div>

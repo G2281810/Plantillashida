@@ -12,7 +12,7 @@ class ConsultaEstudioController extends Controller
 {
     public function altaconestudio()
     {
-        $consulta =consulta_estudio::orderBy('idces','DESC')->take(1)->get();
+        $consulta =consulta_estudio::withTrashed()->orderBy('idces','DESC')->take(1)->get();
         $cuantos = count($consulta);
     if($cuantos==0)
     {
@@ -57,12 +57,33 @@ class ConsultaEstudioController extends Controller
     }
     public function reporteconsultaes()
     {
-      $consulta = consulta_estudio::join('estudios','consulta_estudios.idestudio','=','estudios.idestudio')
+      $consulta = consulta_estudio::withTrashed()->join('estudios','consulta_estudios.idestudio','=','estudios.idestudio')
           ->join('pacientes','consulta_estudios.idpaciente','=','pacientes.idpaciente')
-          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.hora_estudio','estudios.nombre as estudio','pacientes.apellidop','pacientes.nombre as paciente')
+          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.deleted_at', 'consulta_estudios.hora_estudio','estudios.nombre as estudio','pacientes.apellidop','pacientes.nombre as paciente')
           ->orderBy('pacientes.nombre')
           ->get();
           return view('consultaestudio.reporteconsultaes')->with('consulta',$consulta);
     }
+  public function desactivaconestudio($idces)
+  {
+    $consulta_estudio = consulta_estudio::find($idces);
+    $consulta_estudio->delete();
+    Session::flash('mensaje', "La consulta estudio fue desactivada correctamente.");
+      return redirect()->route('reporteconsultaes');
+  }
+  public function activaconestudio($idces)
+  {
+
+    $consulta_estudio = consulta_estudio::withTrashed()->where('idces',$idces)->restore();
+    Session::flash('mensaje', "La consulta estudio ha sido activada correctamente.");
+      return redirect()->route('reporteconsultaes');
+  }
+  public function borrarconestudio($idces)
+  {
+     $consulta_estudio=consulta_estudio::withTrashed()->find($idces)->forceDelete();
+     Session::flash('mensaje', "La consulta estudio ha sido eliminda del sistema correctamente.");
+    return redirect()->route('reporteconsultaes');
+
+  }
    
 }

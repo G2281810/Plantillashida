@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\tipo_sangres;
+use App\Models\pacientes;
+
 use Session;
 class Tipo_sangreController extends Controller
 {
     public function altatiposangre()
     {
-    $consulta = tipo_sangres::orderBy('idtipossan','DESC')->take(1)->get();
+    $consulta = tipo_sangres::withTrashed()->orderBy('idtipossan','DESC')->take(1)->get();
     $cuantos = count($consulta);
 
          if($cuantos==0)
@@ -38,10 +40,38 @@ class Tipo_sangreController extends Controller
     }
     public function reportetiposan()
     {
-        $consulta = tipo_sangres::
-          select('tipo_sangres.idtipossan','tipo_sangres.tipo')
+        $consulta = tipo_sangres::withTrashed()->select('tipo_sangres.idtipossan','tipo_sangres.tipo','tipo_sangres.deleted_at')
           ->orderBy('tipo_sangres.idtipossan')
           ->get();
           return view('tiposangre.reportetiposan')->with('consulta',$consulta);
     }
+  public function desactivatiposangre($idtipossan)
+  {
+
+    $tiposangre = tipo_sangres::find($idtipossan);
+    $tiposangre->delete();
+    Session::flash('mensaje', "El tipo de sangre ah sido desactivado correctamete.");
+      return redirect()->route('reportetiposan');
+  }
+  public function activatiposangre($idtipossan)
+  {
+
+    $tiposangre = tipo_sangres::withTrashed()->where('idtipossan',$idtipossan)->restore();
+    Session::flash('mensaje', "El tipo de sangre ha sido activado correctamente.");
+      return redirect()->route('reportetiposan');
+  }
+  public function borrartiposangre($idtipossan)
+  {
+    $buscatiposangre=pacientes::where('idtipossan',$idtipossan)->get();
+    $cuantos = count($buscatiposangre);
+    if($cuantos==0)
+    {
+     $tiposangre=tipo_sangres::withTrashed()->find($idtipossan)->forceDelete();
+     Session::flash('mensaje', "El tipo de sangre  ha sido borrado del sistema correctamente.");
+    return redirect()->route('reportetiposan');
+    }else{
+      Session::flash('mensaje2', "El tipo de sangre no puede eliminarse del sistema porque un paciente tiene este tipo de sangre.");
+    return redirect()->route('reportetiposan');
+    }
+  }
 }

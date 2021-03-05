@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\tipo_usuario;
+use App\Models\pacientes;
 use Session;
 class TipoUsuarioController extends Controller
 {
     public function altatipousuario()
     {
-        $consulta = tipo_usuario::orderBy('idtipo_u','DESC')->take(1)->get();
+        $consulta = tipo_usuario::withTrashed()->orderBy('idtipo_u','DESC')->take(1)->get();
         $cuantos = count($consulta);
     if($cuantos==0)
     {
@@ -37,11 +38,39 @@ class TipoUsuarioController extends Controller
     }
     public function reportetipousuario()
   {
-   $consulta = tipo_usuario::
-          select('tipo_usuarios.idtipo_u','tipo_usuarios.tipo')
+   $consulta = tipo_usuario::withTrashed()->
+           select('tipo_usuarios.idtipo_u','tipo_usuarios.tipo','tipo_usuarios.deleted_at')
           ->orderBy('tipo_usuarios.tipo')
           ->get();
           return view('tipousuario.reportetipousuarios')->with('consulta',$consulta);
+  }
+  public function desactivatipousuario($idtipo_u)
+  {
+    $tipo_u = tipo_usuario::find($idtipo_u);
+    $tipo_u->delete();
+    Session::flash('mensaje', "El tipo de usuario ha sido desactivado correctamente.");
+      return redirect()->route('reportetipousuario');
+  }
+  public function activatipousuario($idtipo_u)
+  {
+
+    $tipo_u = tipo_usuario::withTrashed()->where('idtipo_u',$idtipo_u)->restore();
+    Session::flash('mensaje', "El tipo de usuario ha sido activado correctamente.");
+      return redirect()->route('reportetipousuario');
+  }
+  public function borrartipousuario($idtipo_u)
+  {
+    $buscatipo_u=pacientes::where('idtipossan',$idtipo_u)->get();
+    $cuantos = count($buscatipo_u);
+    if($cuantos==0)
+    {
+     $tipo_u=tipo_usuario::withTrashed()->find($idtipo_u)->forceDelete();
+     Session::flash('mensaje', "El tipo de usuario ha sido borrado del sistema correctamente.");
+    return redirect()->route('reportetipousuario');
+    }else{
+      Session::flash('mensaje2', "El tipo de usuario no puede eliminarse porque un usuario ocupa este tipo.");
+    return redirect()->route('reportetipousuario');
+    }
   }
 }
 

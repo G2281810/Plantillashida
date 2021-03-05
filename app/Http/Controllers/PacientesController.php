@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\pacientes;
 use App\Models\tipo_sangres;
+use App\Models\consulta_estudio;
 use Session;
 class PacientesController extends Controller
 {
     public function altapacientes()
     {
         $tipossan = tipo_sangres::all();
-        $consulta = pacientes::orderBy('idpaciente','DESC')->take(1)->get();
+        $consulta = pacientes::withTrashed()->orderBy('idpaciente','DESC')->take(1)->get();
         $cuantos = count($consulta);
     if($cuantos==0)
     {
@@ -59,12 +60,39 @@ class PacientesController extends Controller
     }
      public function reportepacientes()
   {
-    $consulta = pacientes::
-          select('pacientes.idpaciente','pacientes.nombre','pacientes.apellidop','pacientes.apellidom','pacientes.edad',
-         'pacientes.telefono','pacientes.correo','pacientes.alergias',)
+    $consulta = pacientes::withTrashed()->select('pacientes.idpaciente','pacientes.nombre','pacientes.apellidop','pacientes.apellidom','pacientes.edad',
+         'pacientes.telefono','pacientes.correo','pacientes.alergias','deleted_at')
           ->orderBy('pacientes.nombre')
           ->get();
           return view('pacientes.reportepacientes')->with('consulta',$consulta);
+  }
+  public function desactivapaciente($idpaciente)
+  {
+    $pacientes = pacientes::find($idpaciente);
+    $pacientes->delete();
+    Session::flash('mensaje', "El paciente ha sido desactivado correctamente.");
+      return redirect()->route('reportepacientes');
+  }
+  public function activapaciente($idpaciente)
+  {
+
+    $pacientes = pacientes::withTrashed()->where('idpaciente',$idpaciente)->restore();
+    Session::flash('mensaje', "El paciente ha sido activado correctamente.");
+      return redirect()->route('reportepacientes');
+  }
+  public function borrarpaciente($idpaciente)
+  {
+    $buscapaciente=consulta_estudio::where('idpaciente',$idpaciente)->get();
+    $cuantos = count($buscapaciente);
+    if($cuantos==0)
+    {
+     $pacientes=pacientes::withTrashed()->find($idpaciente)->forceDelete();
+     Session::flash('mensaje', "El paciente  ha sido borrado del sistema correctamente.");
+    return redirect()->route('reportepacientes');
+    }else{
+      Session::flash('mensaje2', "El paciente no puede eliminarse del sistema porque esta en la tabla de estudios.");
+    return redirect()->route('reportepacientes');
+    }
   }
 }
 

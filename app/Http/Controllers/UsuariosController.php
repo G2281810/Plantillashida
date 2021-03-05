@@ -10,7 +10,7 @@ class UsuariosController extends Controller
     public function altausuarios()
     {
       
-        $consulta = usuarios::orderBy('idusuario','DESC')->take(1)->get();
+        $consulta = usuarios::withTrashed()->orderBy('idusuario','DESC')->take(1)->get();
         $cuantos = count($consulta);
          if($cuantos==0)
         {   
@@ -56,10 +56,31 @@ class UsuariosController extends Controller
     }
       public function reporteusuarios()
   {
-   $consulta = usuarios::join('tipo_usuarios','usuarios.idtipo_u','=','tipo_usuarios.idtipo_u')
-          ->select('usuarios.idusuario','usuarios.nombre','usuarios.apellidom','tipo_usuarios.tipo as tipo','usuarios.apellidop','usuarios.telefono','usuarios.edad','usuarios.correo')
+   $consulta = usuarios::withTrashed()->join('tipo_usuarios','usuarios.idtipo_u','=','tipo_usuarios.idtipo_u')
+          ->select('usuarios.idusuario','usuarios.nombre','usuarios.apellidom','tipo_usuarios.tipo as tipo','usuarios.deleted_at','usuarios.apellidop','usuarios.telefono','usuarios.edad','usuarios.correo')
           ->orderBy('usuarios.nombre')
           ->get();
           return view('usuarios.reporteusuarios')->with('consulta',$consulta);
+  }
+  public function desactivausuario($idusuario)
+  {
+
+    $usuario = usuarios::find($idusuario);
+    $usuario->delete();
+    Session::flash('mensaje', "El usuario ha sido desactivado correctamente.");
+      return redirect()->route('reporteusuarios');
+  }
+  public function activausuario($idusuario)
+  {
+
+    $usuario = usuarios::withTrashed()->where('idusuario',$idusuario)->restore();
+    Session::flash('mensaje', "El usuario ha sido activado correctamente.");
+      return redirect()->route('reporteusuarios');
+  }
+  public function borrarusuario($idusuario)
+  {
+    $usuario = usuarios::withTrashed()->find($idusuario)->forceDelete();
+     Session::flash('mensaje', "El usuario ha sido eliminado correctamente del sistema.");
+      return redirect()->route('reporteusuarios');
   }
 }

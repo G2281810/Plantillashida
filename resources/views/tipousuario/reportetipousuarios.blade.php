@@ -44,6 +44,10 @@
                  <div class="alert alert-success">
                   {{Session::get('mensaje')}}
                   @endif
+                   @if (Session::has('mensaje2'))
+                 <div class="alert alert-danger">
+                  {{Session::get('mensaje2')}}
+                  @endif
                  </div>
                     
                     <table class="table table-dark">
@@ -67,17 +71,17 @@
                   <button type="button" class="btn btn-success">Modificar</button>
                 </a>
                 @if($c->deleted_at)
-                 <a>
-                   <button type="button" class="btn btn-success">Activar</button>
-                 </a>
-                 <a>
-                  <button type="button" class="btn btn-danger">Eliminar</button>
+                <a href="{{route('activatipousuario',['idtipo_u'=>$c->idtipo_u])}}"> 
+                  <button type="button" class="btn btn-warning">Activar</button>
                 </a>
-                 @else
-                 <a>
-                   <button type="button" class="btn btn-danger">Desctivar</button></td>
-                 </a>
-                 @endif
+                <a href="{{route('borrartipousuario',['idtipo_u'=>$c->idtipo_u])}}"> 
+                  <button type="button" class="btn btn-danger">Borrar</button>
+                </a>
+                @else
+                <a href="{{route('desactivatipousuario',['idtipo_u'=>$c->idtipo_u])}}"> 
+                  <button type="button" class="btn btn-danger">Desactivar</button>
+                </a>
+                @endif
              </tr>
            @endforeach
                         </tbody>

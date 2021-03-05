@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\Softdeletes;
+use Illuminate\Database\Eloquent\Softdeletes;
 
 class pacientes extends Model
 {
     use HasFactory;
-    //use Softdeletes;
-    protected $primaryKey='idpaci';
+    use Softdeletes;
+    protected $primaryKey='idpaciente';
     protected $fillable=
     [
-        'idpaci',
+        'idpaciente',
         'nombre',
         'apellidop',
         'apellidom',

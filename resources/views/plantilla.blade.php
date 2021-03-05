@@ -29,6 +29,7 @@
 
     <!-- Custom Theme Style -->
     <link href="./build/css/custom.min.css" rel="stylesheet">
+    <!--<link href="https://bootswatch.com/4/darkly/bootstrap.min.css" rel="stylesheet"> -->
     <link href="./build/css/custom.css" rel="stylesheet">
     <!--estilos-->
   <link rel="stylesheet" href="./build/css/estilos.css">
@@ -177,7 +178,7 @@
                       <li><a href="./production/formulario.html">Modificación consulta estudios</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="altaestudios"><i class="fa fa-file-text"></i>Estudios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="reporteestudio"><i class="fa fa-file-text"></i>Estudios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta estudios</a></li>
                       <li><a href="./production/formulario.html">Reporte estudios</a></li>
