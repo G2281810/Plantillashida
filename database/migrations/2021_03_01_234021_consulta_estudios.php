@@ -22,8 +22,13 @@ class ConsultaEstudios extends Migration
           $table->integer('idestudio')->unsigned();
           $table->foreign('idestudio')->references('idestudio')->on('estudios');
 
+          $table->integer('idpaciente')->unsigned();
+          $table->foreign('idpaciente')->references('idpaciente')->on('pacientes');
+          $table->string('fecha_estudio',10);
+          $table->string('hora_estudio',10);
+          $table->string('observaciones',255);
           $table->string('archivo_adjunto');
-          $table->string('activo',2);
+         
           $table->rememberToken();
           $table->timestamps();
       });

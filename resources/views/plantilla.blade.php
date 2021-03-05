@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>My-dentis</title>
 
     <!-- Bootstrap -->
     <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-space-shuttle"></i> <span>MY-DENTIS</span></a>
+              <a href="index" class="site_title"><i class="fa fa-space-shuttle"></i> <span>MY-DENTIS</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -48,11 +48,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="./production/images/alex.jpg" alt="..." class="img-circle profile_img">
+                <img src="./production/images/gustavo.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
-                <h2>Alexis Gómez</h2>
+                <h2>Gustavo Angel</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -64,12 +64,8 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="reporte">Menu principal</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="altausuarios"><i class="fa fa-user"></i> Usuarios  <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a a href="index"><i class="fa fa-home"></i> Inicio <!--<span class="fa fa-chevron-down"></span>--></a></li>
+                  <li><a href="reporteusuarios"><i class="fa fa-user"></i> Usuarios  <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                
                       <li><a href="./production/formulario.html">Alta usuarios</a></li>
                       <li><a href="./production/formulario.html">Reporte usuarios</a></li>
@@ -77,7 +73,7 @@
                       <li><a href="./production/formulario.html">Modificación usuarios</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="altapacientes"><i class="fa fa-user"></i>Pacientes  <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="reportepacientes"><i class="fa fa-user"></i>Pacientes  <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta pacientes</a></li>
                       <li><a href="./production/formulario.html">Reporte pacientes</a></li>
@@ -125,7 +121,7 @@
                       <li><a href="./production/formulario.html">Modificación Status</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="altatiposangre"><i class="fa fa-tint"></i>Tipo de sangre <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="reportetiposan"><i class="fa fa-tint"></i>Tipo de sangre <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta tipo de sangre</a></li>
                       <li><a href="./production/formulario.html">Reporte tipo de sangre</a></li>
@@ -165,7 +161,7 @@
                       <li><a href="./production/formulario.html">Modificación tipo medicamento</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="altatipousuario"><i class="fa fa-navicon"></i>Tipo usuarios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="reportetipousuario"><i class="fa fa-navicon"></i>Tipo usuarios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta tipo usuarios</a></li>
                       <li><a href="./production/formulario.html">Reporte tipo usuarios</a></li>
@@ -173,7 +169,7 @@
                       <li><a href="./production/formulario.html">Modificación tipo usuarios</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="altaconestudio"><i class="fa fa-info-circle"></i>Consulta estudios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="reporteconsultaes"><i class="fa fa-info-circle"></i>Consulta estudios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                    
                       <li><a href="./production/formulario.html">Alta consulta estudios</a></li>
                       <li><a href="./production/formulario.html">Reporte consulta estudios</a></li>
@@ -223,7 +219,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="./production/images/alex.jpg" alt="">Alexis Gómez
+                    <img src="./production/images/gustavo.jpg" alt="">Gustavo Angel
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>

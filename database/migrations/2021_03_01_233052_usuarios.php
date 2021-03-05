@@ -26,7 +26,7 @@ class Usuarios extends Migration
           $table->integer('idtipo_u')->unsigned();
           $table->foreign('idtipo_u')->references('idtipo_u')->on('tipo_usuarios');
 
-          $table->string('activo',2);
+          
           $table->rememberToken();
           $table->timestamps();
       });

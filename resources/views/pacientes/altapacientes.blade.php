@@ -125,9 +125,9 @@
                   <div id="gender" class="btn-group" data-toggle="buttons">
                     <p>
                       Si
-                      <input type="radio" class="flat" name="genders" id="gendersi" value="Si" checked="" required />
+                      <input type="radio" class="flat" name="preguntaale" id="gendersi" value="Si" checked="" required />
                       No
-                      <input type="radio" class="flat" name="genders" id="genderno" value="No"/>
+                      <input type="radio" class="flat" name="preguntaale" id="genderno" value="No"/>
                     </p>
                   </div>
                 </div>
@@ -143,21 +143,7 @@
                 </div>
               </div>
 
-            <!--Activo-->
-          <div class="item form-group">
-            <label class="col-form-label col-md-5 col-sm-5 label-align">Activo:<span
-              class="required">*</span></label>
-            <div class="col-md-5 col-sm-5 ">
-              <div id="gender" class="btn-group" data-toggle="buttons">
-                <p>
-                  Si
-                  <input type="radio" class="flat" id="activo1" name="checked" value = "s"  checked="" required />
-                  No
-                  <input type="radio" class="flat" id="activo2" name="checked" value = "n"/>
-                </p>
-              </div>
-            </div>
-          </div>
+           
               <!--botones-->
               <div class="field item form-group">
               <label class="col-form-label col-md-5 col-sm-5 label-align"></label>

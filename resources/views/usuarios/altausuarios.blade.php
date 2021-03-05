@@ -12,9 +12,9 @@
              class="required">*</span>
             </label>
            <div class="col-md-5 col-sm-5">
-             <input type="text" name="idusuario" id="idusuario" value="{{$idsigue}}"  readonly='readonly'  class="form-control" placeholder="Introduce clave del usuario" tabindex="5">
-             @if($errors->first('idusuario'))
-              <p class='text-danger'>{{$errors->first('idusuario')}}</p>
+             <input type="text" name="idusuarios" id="idusuarios" value="{{$idsigue}}"  readonly='readonly'  class="form-control" placeholder="Introduce clave del usuario" tabindex="5">
+             @if($errors->first('idusuarios'))
+              <p class='text-danger'>{{$errors->first('idusuarios')}}</p>
              @endif
            </div>
           </div>
@@ -93,14 +93,14 @@
             <label class="col-form-label col-md-5 col-sm-5 label-align">Tipo de usuario:<span
               class="required">*</span></label>
             <div class="col-md-5 col-sm-5 ">
-              <select class="select2_group form-control"name="idu" id="idu">
+              <select class="select2_group form-control"name="idtipo_u" id="idtipo_u">
                 <option disabled="disabled" selected="selected" >Selecciona una opcion</option>
                 @foreach($tipousuario as $tipousuario)
                   <option value="{{$tipousuario['idtipo_u']}}">{{$tipousuario['tipo']}}</option>
                 @endforeach
               </select>
-              @if($errors->first('idu'))
-                 <p class='text-danger'>{{$errors->first('idu')}}</p>
+              @if($errors->first('idtipo_u'))
+                 <p class='text-danger'>{{$errors->first('idtipo_u')}}</p>
                 @endif
             </div>
           </div>
@@ -116,21 +116,7 @@
               @endif
             </div>
           </div>
-          <!--Activo-->
-          <div class="item form-group">
-            <label class="col-form-label col-md-5 col-sm-5 label-align">Activo:<span
-              class="required">*</span></label>
-            <div class="col-md-5 col-sm-5 ">
-              <div id="gender" class="btn-group" data-toggle="buttons">
-                <p>
-                  Si
-                  <input type="radio" class="flat" id="activo1" name="checked" value = "s"  checked="" required />
-                  No
-                  <input type="radio" class="flat" id="activo2" name="checked" value = "n"/>
-                </p>
-              </div>
-            </div>
-          </div>
+          
           <div class="field item form-group">
             <label class="col-form-label col-md-5 col-sm-5 label-align"></label>
             <div class="col-md-5 col-sm-5 ">

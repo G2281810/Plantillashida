@@ -24,6 +24,6 @@ class pacientes extends Model
         'correo',
         'preguntaale',
         'alergias',
-        'activo'
+        
     ];
 }

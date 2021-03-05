@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\Softdeletes;
 
 
-class usuario extends Model
+class usuarios extends Model
 {
     use HasFactory;
     //use Softdeletes;
-    protected $primaryKey='idusuario';
+    protected $primaryKey='idusuarios';
     protected $fillable=
     [
         'nombre',
@@ -22,6 +22,6 @@ class usuario extends Model
         'telefono',
         'correo',
         'idtipo_u',
-        'activo'
+        
     ];
 }

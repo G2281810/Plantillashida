@@ -40,21 +40,7 @@
                   @endif
                 </div>
               </div>
-                <!--Activo-->
-            <div class="item form-group">
-                <label class="col-form-label col-md-5 col-sm-5 label-align">Activo:<span
-                  class="required">*</span></label>
-                <div class="col-md-5 col-sm-5 ">
-                  <div id="gender" class="btn-group" data-toggle="buttons">
-                    <p>
-                      Si
-                      <input type="radio" class="flat" name="genderss" id="gendersia" value="Sia" checked="" required />
-                      No
-                      <input type="radio" class="flat" name="genderss" id="gendernoa" value="Noa"/>
-                    </p>
-                  </div>
-                </div>
-              </div>
+              
                 <!--botones-->
               <div class="field item form-group">
               <label class="col-form-label col-md-5 col-sm-5 label-align"></label>

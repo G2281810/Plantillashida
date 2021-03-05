@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\usuario;
+use App\Models\usuarios;
 use App\Models\tipo_usuario;
+use Session;
 class UsuariosController extends Controller
 {
     public function altausuarios()
     {
-        $tipousuario = tipo_usuario::orderBy('tipo')->get();
-        $consulta = usuario::orderBy('idusuario','DESC')->take(1)->get();
+      
+        $consulta = usuarios::orderBy('idusuario','DESC')->take(1)->get();
         $cuantos = count($consulta);
          if($cuantos==0)
         {   
@@ -17,10 +18,11 @@ class UsuariosController extends Controller
         }
          else
         {
-      $idesigue = $consulta[0]->ide + 1;
+      $idesigue = $consulta[0]->idusuario + 1;
         }
+        $tipousuario = tipo_usuario::orderBy('tipo')->get();
+        $tipousuario = tipo_usuario::orderBy('tipo')->get();
         return view('usuarios.altausuarios', compact('tipousuario'))
-        ->with('idsigue',$idesigue)
         ->with('idsigue',$idesigue)
         ->with('tipousuario',$tipousuario);
         
@@ -28,15 +30,36 @@ class UsuariosController extends Controller
     public function guardarusuario(Request $request)
     {
         $this->validate($request,[
-            'idusuario'=> 'required|regex:/^[U][S][U][-][0-9]{4}$/',
-            'nombre'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
-            'apellidop'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
-            'apellidom'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
+            
+            'nombre'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü,ñ]+$/',
+            'apellidop'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü,ñ]+$/',
+            'apellidom'=> 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü,ñ]+$/',
             'edad'=> 'required|regex:/^[0-99]{2}+$/',
             'telefono'=> 'required|regex:/^[0-9]{10}$/',
             'correo'=> 'required|email',
-            'idu' => 'required',
+            'idtipo_u' => 'required',
         ]);
-        echo "Todo correcto";
+        $usuario = new usuarios;
+        $usuario ->idusuario=$request->idusuarios;
+        $usuario ->nombre=$request->nombre;
+        $usuario ->apellidop=$request->apellidop;
+        $usuario ->apellidom=$request->apellidom;
+        $usuario ->edad=$request->edad;
+        $usuario ->sexo = $request->sexo;
+        $usuario ->telefono=$request->telefono;
+        $usuario ->correo=$request->correo;
+        $usuario ->idtipo_u=$request->idtipo_u;
+        
+        $usuario ->save(); 
+      Session::flash('mensaje', "El usuario $request->nombre $request->apellidop ha sido dado de alta correctamente.");
+      return redirect()->route('reporteusuarios');
     }
+      public function reporteusuarios()
+  {
+   $consulta = usuarios::join('tipo_usuarios','usuarios.idtipo_u','=','tipo_usuarios.idtipo_u')
+          ->select('usuarios.idusuario','usuarios.nombre','usuarios.apellidom','tipo_usuarios.tipo as tipo','usuarios.apellidop','usuarios.telefono','usuarios.edad','usuarios.correo')
+          ->orderBy('usuarios.nombre')
+          ->get();
+          return view('usuarios.reporteusuarios')->with('consulta',$consulta);
+  }
 }

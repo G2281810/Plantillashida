@@ -17,7 +17,7 @@ class Estudios extends Migration
           $table->increments('idestudio');
           $table->string('nombre',50);
           $table->string('tipo',30);
-          $table->string('activo',2);
+          
           $table->rememberToken();
           $table->timestamps();
       });

@@ -15,6 +15,6 @@ class estudio extends Model
     [
       'nombre',
       'tipo',
-      'activo'
+      
     ];
 }

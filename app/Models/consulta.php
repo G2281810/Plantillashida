@@ -21,6 +21,6 @@ class consulta extends Model
       'estatura',
       'costo',
       'idstatus',
-      'activo'
+      
     ];
 }

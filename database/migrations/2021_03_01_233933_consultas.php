@@ -27,8 +27,7 @@ class Consultas extends Migration
         $table->integer('idstatus')->unsigned();;
         $table->foreign('idstatus')->references('idstatus')->on('status');
 
-        $table->string('activo',2);
-
+        
         $table->rememberToken();
         $table->timestamps();
       });

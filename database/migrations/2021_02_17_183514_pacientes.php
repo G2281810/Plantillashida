@@ -26,7 +26,6 @@ class Pacientes extends Migration
             $table->string('correo',40);
             $table->string('preguntaale',2);
             $table->string('alergias',150);
-            $table->string('activo',2);
             $table->rememberToken();
             $table->timestamps();
         });

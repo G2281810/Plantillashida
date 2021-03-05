@@ -29,7 +29,7 @@ class odontologo extends Model
       'idesp',
       'hora_entrada',
       'hora_salida',
-      'activo'
+      
 
     ];
 }
