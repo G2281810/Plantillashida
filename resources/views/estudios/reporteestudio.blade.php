@@ -70,8 +70,8 @@
                
 
                <td>
-                <a> 
-                  <button type="button" class="btn btn-success">Modificar</button>
+                <a href="{{route('modificaestudio',['idestudio'=>$c->idestudio])}}"> 
+                  <button type="button" class="btn btn-info">Modificar</button>
                 </a>
                  @if($c->deleted_at)
                 <a href="{{route('activaestudio',['idestudio'=>$c->idestudio])}}"> 

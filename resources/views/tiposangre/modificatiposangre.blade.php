@@ -3,7 +3,7 @@
 <div class="right_col" role="main">
     <div class="control">
       <h1>ALTA TIPO SANGRE</h1>
-<form action = "{{route('guardartiposan')}}" method = "POST">
+<form action = "{{route('guardacambiostiposangre')}}" method = "POST">
         {{csrf_field()}}
       <div class="x_content">
           <div class="field item form-group">
@@ -11,7 +11,7 @@
              class="required">*</span>
             </label>
            <div class="col-md-5 col-sm-5">
-             <input type="text" name="idtipossan" id="idtipossan" value="{{$idsigue}}"  readonly='readonly' class="form-control" placeholder="Introduce clave del tipo de usuario" tabindex="5">
+             <input type="text" name="idtipossan" id="idtipossan" value="{{$consulta->idtipossan}}"  readonly='readonly' class="form-control" placeholder="Introduce clave del tipo de usuario" tabindex="5">
              @if($errors->first('idtipo'))
               <p class='text-danger'>{{$errors->first('idtipossan')}}</p>
              @endif
@@ -22,7 +22,7 @@
             <label class="col-form-label col-md-5 col-sm-5  label-align">Tipo:<span
                 class="required">*</span></label>
             <div class="col-md-5 col-sm-5">
-              <input type="text" name="tipos" id="tipos" value="{{old('tipos')}}" class="form-control" placeholder="" tabindex="5">
+              <input type="text" name="tipos" id="tipos" value="{{$consulta->tipo}}" class="form-control" placeholder="" tabindex="5">
               @if($errors->first('tipos'))
                <p class='text-danger'>{{$errors->first('tipos')}}</p>
               @endif

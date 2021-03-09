@@ -74,8 +74,8 @@
                <td>{{$c->alergias}}</td>
 
                <td>
-                <a> 
-                  <button type="button" class="btn btn-success">Modificar</button>
+                <a href="{{route('modificapacientes',['idpaciente'=>$c->idpaciente])}}"> 
+                  <button type="button" class="btn btn-info">Modificar</button>
                 </a>
                 @if($c->deleted_at)
                 <a href="{{route('activapaciente',['idpaciente'=>$c->idpaciente])}}"> 

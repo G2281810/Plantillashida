@@ -76,5 +76,30 @@ class EstudiosController extends Controller
     return redirect()->route('reporteestudio');
     }
   }
+  public function modificaestudio($idestudio){
+    $consulta = estudio::withTrashed()->select('estudios.idestudio','estudios.nombre','estudios.tipo')
+    ->where('idestudio',$idestudio)
+    ->get();
+    return view('estudios.modificaestudio')
+    ->with('consulta',$consulta[0]);
+
+  }
+
+  public function guardacambiosestudio(Request $request){
+    $this->validate($request,[
+     'idestudio'=>'required|numeric',
+      'nombree'=> 'required|regex:/^[A-Z,a-z, ,á,é,í,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
+      'tipoes'=>'required|regex:/^[A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
+
+    ]);
+     $estudio = estudio::withTrashed()->find($request->idestudio);
+     $estudio->idestudio=$request->idestudio;
+     $estudio->nombre=$request->nombree;
+     $estudio->tipo=$request->tipoes;
+     $estudio ->save();
+    Session::flash('mensaje', "El estudio $request->tipoes ha sido dado modificado correctamente.");
+    return redirect()->route('reporteestudio');
+  } 
+
     
 }

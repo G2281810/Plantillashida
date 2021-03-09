@@ -12,27 +12,27 @@
     <title>My-dentis</title>
 
     <!-- Bootstrap -->
-    <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./vendors/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
-    <link href="./vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./vendors/font-awesome/css/font-awesome.min.css')}}">
     <!-- NProgress -->
-    <link href="./vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./vendors/nprogress/nprogress.css')}}">
     <!-- iCheck -->
-    <link href="./vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./vendors/iCheck/skins/flat/green.css')}}">
 	
     <!-- bootstrap-progressbar -->
-    <link href="./vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}">
     <!-- JQVMap -->
-    <link href="./vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{URL::asset('./vendors/jqvmap/dist/jqvmap.min.css')}}"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="./vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
 
     <!-- Custom Theme Style -->
-    <link href="./build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./build/css/custom.min.css')}}">
     <!--<link href="https://bootswatch.com/4/darkly/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="./build/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('./build/css/custom.css')}}" >
     <!--estilos-->
-  <link rel="stylesheet" href="./build/css/estilos.css">
+  <link rel="stylesheet" href="{{URL::asset('./build/css/estilos.css')}}">
   </head>
 
   <body class="nav-md">
@@ -49,7 +49,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="./production/images/gustavo.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{URL::asset('./production/images/gustavo.jpg')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
@@ -220,7 +220,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="./production/images/gustavo.jpg" alt="">Gustavo Angel
+                    <img src="{{URL::asset('./production/images/gustavo.jpg')}}" alt="">Gustavo Angel
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>

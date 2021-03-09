@@ -74,4 +74,29 @@ class Tipo_sangreController extends Controller
     return redirect()->route('reportetiposan');
     }
   }
+  public function modificatiposangre($idtipossan){
+   $consulta = tipo_sangres::withTrashed()->select('tipo_sangres.idtipossan','tipo_sangres.tipo')
+    ->where('idtipossan',$idtipossan)
+    ->get();
+    $tipo_sangres = tipo_sangres::all();
+    return view('tiposangre.modificatiposangre')
+    ->with('consulta',$consulta[0])
+    ->with('tipo_sangres', $tipo_sangres);
+  }
+  public function guardacambiostiposangre(Request $request){
+    $this->validate($request,[
+      'idtipossan'=>'required|numeric',
+      'tipos'=>'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü,+,-]+$/',
+
+    ]);
+    $tipo_sangres = tipo_sangres::withTrashed()->find($request->idtipossan);
+    $tipo_sangres ->idtipossan=$request->idtipossan;
+     $tipo_sangres ->tipo=$request->tipos;
+    
+     $tipo_sangres ->save();
+    Session::flash('mensaje', "El tipo $request->tipos ha sido dado modificado correctamente.");
+    return redirect()->route('reportetiposan');
+  }
+   
+
 }

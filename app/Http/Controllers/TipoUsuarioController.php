@@ -33,7 +33,7 @@ class TipoUsuarioController extends Controller
         $tipousuario ->idtipo_u=$request->idtipo;
         $tipousuario ->tipo=$request->tipo;
         $tipousuario->save();
-        Session::flash('mensaje', "El usuario $request->nombre $request->apellidop ha sido dado de alta correctamente.");
+        Session::flash('mensaje', "El tipo  $request->tipo ha sido dado de alta correctamente.");
         return redirect()->route('reportetipousuario');
     }
     public function reportetipousuario()
@@ -72,5 +72,32 @@ class TipoUsuarioController extends Controller
     return redirect()->route('reportetipousuario');
     }
   }
+  public function modificatipousuario($idtipo_u)
+  {
+
+    $consulta = tipo_usuario::withTrashed()->
+    select('tipo_usuarios.idtipo_u','tipo_usuarios.tipo')
+    ->where('idtipo_u',$idtipo_u)
+    ->get();
+    $tipo_u = tipo_usuario::all();
+    return view('tipousuario.modificatipousuario')
+    ->with('consulta',$consulta[0])
+    ->with('tipo_usuarios', $tipo_u);
+  }
+  public function guardacambiostipousuario(Request $request){
+    $this->validate($request,[
+      
+      'tipo'=>'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
+
+    ]);
+    $tipo_u = tipo_usuario::withTrashed()->find($request->idtipo_u);
+    $tipo_u ->idtipo_u=$request->idtipo_u;
+    $tipo_u ->tipo=$request->tipo;
+    
+     $tipo_u ->save();
+    Session::flash('mensaje', "El tipo $request->tipo ha sido dado modificado correctamente.");
+    return redirect()->route('reportetipousuario');
+  }
+  
 }
 

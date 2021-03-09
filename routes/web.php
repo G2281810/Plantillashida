@@ -26,6 +26,10 @@ Route::get('/reportepacientes',[PacientesController::class,'reportepacientes'])-
 Route::get('/desactivapaciente/{idpaciente}',[PacientesController::class,'desactivapaciente'])->name('desactivapaciente');
 Route::get('/activapaciente/{idpaciente}',[PacientesController::class,'activapaciente'])->name('activapaciente');
 Route::get('/borrarpaciente/{idpaciente}',[PacientesController::class,'borrarpaciente'])->name('borrarpaciente');
+Route::get('/modificapacientes/{idpaciente}',[PacientesController::class,'modificapacientes'])->name('modificapacientes');
+Route::post('/guardacambiospaciente',[PacientesController::class,'guardacambiospaciente'])->name('guardacambiospaciente');
+//Route::get('/vistas',[PacientesController::class,'vistas'])->name('vistas');
+
 
 
                                 /*Usuarios*/
@@ -35,6 +39,8 @@ Route::get('/reporteusuarios',[UsuariosController::class,'reporteusuarios'])->na
 Route::get('/desactivausuario/{idusuario}',[UsuariosController::class,'desactivausuario'])->name('desactivausuario');
 Route::get('/activausuario/{idusuario}',[UsuariosController::class,'activausuario'])->name('activausuario');
 Route::get('/borrarusuario/{idusuario}',[UsuariosController::class,'borrarusuario'])->name('borrarusuario');
+Route::get('/modificausuario/{idusuario}',[UsuariosController::class,'modificausuario'])->name('modificausuario');
+Route::get('/guardacambiosusuario',[UsuariosController::class,'guardacambiosusuario'])->name('guardacambiosusuario');
 
 
                                 //Tipo Usuarios//
@@ -44,6 +50,8 @@ Route::get('/reportetipousuario',[TipoUsuarioController::class,'reportetipousuar
 Route::get('/desactivatipousuario/{idtipo_u}',[TipoUsuarioController::class,'desactivatipousuario'])->name('desactivatipousuario');
 Route::get('/activatipousuario/{idtipo_u}',[TipoUsuarioController::class,'activatipousuario'])->name('activatipousuario');
 Route::get('/borrartipousuario/{idtipo_u}',[TipoUsuarioController::class,'borrartipousuario'])->name('borrartipousuario');
+Route::get('/modificatipousuario/{idtipo_u}',[TipoUsuarioController::class,'modificatipousuario'])->name('modificatipousuario');
+Route::post('/guardacambiostipousuario',[TipoUsuarioController::class,'guardacambiostipousuario'])->name('guardacambiostipousuario');
 
 
                                 //Consulta estudio//
@@ -53,7 +61,8 @@ Route::get('/reporteconsultaes',[ConsultaEstudioController::class,'reporteconsul
 Route::get('/desactivaconestudio/{idces}',[ConsultaEstudioController::class,'desactivaconestudio'])->name('desactivaconestudio');
 Route::get('/activaconestudio/{idces}',[ConsultaEstudioController::class,'activaconestudio'])->name('activaconestudio');
 Route::get('/borrarconestudio/{idces}',[ConsultaEstudioController::class,'borrarconestudio'])->name('borrarconestudio');
-
+Route::get('/modificaconestudio/{idces}',[ConsultaEstudioController::class,'modificaconestudio'])->name('modificaconestudio');
+Route::post('/guardacambiosconestudio',[ConsultaEstudioController::class,'guardacambiosconestudio'])->name('guardacambiosconestudio');
                                 //EStudios//
 Route::get('/altaestudios',[EstudiosController::class, 'altaestudios'])->name('altaestudios');
 Route::post('/guardarestudios',[EstudiosController::class, 'guardarestudios'])->name('guardarestudios');
@@ -61,6 +70,8 @@ Route::get('/reporteestudio',[EstudiosController::class,'reporteestudio'])->name
 Route::get('/desactivaestudio/{idestudio}',[EstudiosController::class,'desactivaestudio'])->name('desactivaestudio');
 Route::get('/activaestudio/{idestudio}',[EstudiosController::class,'activaestudio'])->name('activaestudio');
 Route::get('/borrarestudio/{idestudio}',[EstudiosController::class,'borrarestudio'])->name('borrarestudio');
+Route::get('/modificaestudio/{idestudio}',[EstudiosController::class,'modificaestudio'])->name('modificaestudio');
+Route::post('/guardacambiosestudio',[EstudiosController::class,'guardacambiosestudio'])->name('guardacambiosestudio');
 
                                 //Tiposangre//
 Route::get('/altatiposangre',[Tipo_sangreController::class, 'altatiposangre'])->name('altatiposangre');
@@ -69,6 +80,8 @@ Route::get('/reportetiposan',[Tipo_sangreController::class,'reportetiposan'])->n
 Route::get('/desactivatiposangre/{idtipossan}',[Tipo_sangreController::class,'desactivatiposangre'])->name('desactivatiposangre');
 Route::get('/activatiposangre/{idtipossan}',[Tipo_sangreController::class,'activatiposangre'])->name('activatiposangre');
 Route::get('/borrartiposangre/{idtipossan}',[Tipo_sangreController::class,'borrartiposangre'])->name('borrartiposangre');
+Route::get('/modificatiposangre/{idtipossan}',[Tipo_sangreController::class,'modificatiposangre'])->name('modificatiposangre');
+Route::post('/guardacambiostiposangre',[Tipo_sangreController::class,'guardacambiostiposangre'])->name('guardacambiostiposangre');
 
 Route::get('/',[PacientesController::class,'index'])->name('index');
 Route::get('/index',[PacientesController::class,'index'])->name('index');

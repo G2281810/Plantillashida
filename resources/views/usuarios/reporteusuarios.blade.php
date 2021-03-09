@@ -70,8 +70,8 @@
                 <td>{{$c->tipo}}</td>
 
                <td>
-                <a> 
-                  <button type="button" class="btn btn-success">Modificar</button>
+                <a href="{{route('modificausuario',['idusuario'=>$c->idusuario])}}"> 
+                  <button type="button" class="btn btn-info">Modificar</button>
                 </a>
                 @if($c->deleted_at)
                 <a href="{{route('activausuario',['idusuario'=>$c->idusuario])}}"> 

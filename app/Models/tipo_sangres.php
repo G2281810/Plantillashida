@@ -11,5 +11,7 @@ class tipo_sangres extends Model
     use HasFactory;
     use Softdeletes;
     protected $primaryKey='idtipossan';
-    protected $fillable=['idtipossan','tipo'];
+
+    protected $fillable=[
+        'tipo'];
 }

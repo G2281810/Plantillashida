@@ -69,8 +69,8 @@
                
 
                <td>
-                <a> 
-                  <button type="button" class="btn btn-success">Modificar</button>
+                <a href="{{route('modificaconestudio',['idces'=>$c->idces])}}"> 
+                  <button type="button" class="btn btn-info">Modificar</button>
                 </a>
                  @if($c->deleted_at)
                 <a href="{{route('activaconestudio',['idces'=>$c->idces])}}"> 

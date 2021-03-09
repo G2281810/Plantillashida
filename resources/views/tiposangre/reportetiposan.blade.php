@@ -68,8 +68,8 @@
                 <td>{{$c->tipo}}</td>
 
                <td>
-                <a> 
-                  <button type="button" class="btn btn-success">Modificar</button>
+                <a href="{{route('modificatiposangre',['idtipossan'=>$c->idtipossan])}}"> 
+                  <button type="button" class="btn btn-info">Modificar</button>
                 </a>
                  @if($c->deleted_at)
                 <a href="{{route('activatiposangre',['idtipossan'=>$c->idtipossan])}}"> 
