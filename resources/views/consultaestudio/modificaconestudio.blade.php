@@ -56,9 +56,9 @@
               class="required">*</span></label>
             <div class="col-md-5 col-sm-5 ">
               <select class="select2_group form-control"name="idpaciente" id="idpaciente">
-                <option value="{{$consulta->idpaciente}}">{{$consulta->paciente}}</option>
+                <option value="{{$consulta->idpaciente}}">{{$consulta->paciente}} {{$consulta->apellidop}}  {{$consulta->apellidom}}</option>
                   @foreach($pacientes as $paciente)
-                    <option value="{{$paciente->idpaciente}}">{{$paciente->nombre}}</option>
+                    <option value="{{$paciente->idpaciente}}">{{$paciente->nombre}} {{$paciente->apellidop}} {{$paciente->apellidom}}</option>
                   @endforeach
               </select>
               @if($errors->first('idpaciente'))

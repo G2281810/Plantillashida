@@ -62,7 +62,7 @@
             
              <tr>
                <th scope="row">{{$c->idces}}</th>
-               <td>{{$c->paciente}} {{$c->apellidop}}</td>
+               <td>{{$c->paciente}} {{$c->apellidop}} {{$c->apellidom}}</td>
                <td>{{$c->estudio}}</td>
                <td>{{$c->fecha_estudio}}</td>
                <td>{{$c->hora_estudio}}</td>

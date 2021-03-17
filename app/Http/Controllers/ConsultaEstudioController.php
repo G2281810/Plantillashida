@@ -59,7 +59,7 @@ class ConsultaEstudioController extends Controller
     {
       $consulta = consulta_estudio::withTrashed()->join('estudios','consulta_estudios.idestudio','=','estudios.idestudio')
           ->join('pacientes','consulta_estudios.idpaciente','=','pacientes.idpaciente')
-          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.deleted_at', 'consulta_estudios.hora_estudio','estudios.nombre as estudio','pacientes.apellidop','pacientes.nombre as paciente')
+          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.deleted_at', 'consulta_estudios.hora_estudio','estudios.nombre as estudio','pacientes.apellidop','pacientes.apellidom','pacientes.nombre as paciente')
           ->orderBy('pacientes.nombre')
           ->get();
           return view('consultaestudio.reporteconsultaes')->with('consulta',$consulta);
@@ -92,7 +92,7 @@ class ConsultaEstudioController extends Controller
           ->join('consultas','consulta_estudios.idconsulta','=','consultas.idconsulta')
           ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.observaciones',
            'consulta_estudios.hora_estudio',
-          'estudios.nombre as estudio','pacientes.apellidop','pacientes.nombre as paciente','consultas.idconsulta as consultas')
+          'estudios.nombre as estudio','pacientes.apellidop','pacientes.apellidom','pacientes.nombre as paciente','consultas.idconsulta as consultas')
     ->where('idces',$idces)
     ->get();
     $paciente = pacientes::all();

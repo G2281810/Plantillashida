@@ -7,6 +7,7 @@ use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\ConsultaEstudioController;
 use App\Http\Controllers\EstudiosController;
 use App\Http\Controllers\Tipo_sangreController;
+//use App\Http\Controllers\LoginController;
 
 
 /*
@@ -82,6 +83,9 @@ Route::get('/activatiposangre/{idtipossan}',[Tipo_sangreController::class,'activ
 Route::get('/borrartiposangre/{idtipossan}',[Tipo_sangreController::class,'borrartiposangre'])->name('borrartiposangre');
 Route::get('/modificatiposangre/{idtipossan}',[Tipo_sangreController::class,'modificatiposangre'])->name('modificatiposangre');
 Route::post('/guardacambiostiposangre',[Tipo_sangreController::class,'guardacambiostiposangre'])->name('guardacambiostiposangre');
+
+                            //Login//
+//Route::post('/login',[LoginController::class,'login'])->name('login');
 
 Route::get('/',[PacientesController::class,'index'])->name('index');
 Route::get('/index',[PacientesController::class,'index'])->name('index');
