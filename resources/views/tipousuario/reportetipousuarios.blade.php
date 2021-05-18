@@ -35,11 +35,10 @@
                 <div class="x_panel">
                     <h1>REPORTE TIPO USUARIO</h1>
                      <br>
-                  <div>
+                  <div align="left">
                     <a href="{{route('altatipousuario')}}"><button type="button" class="btn btn-success" >Nuevo Usuario</button></a>
                  
-                  <br>
-                  <br>
+                  
                   @if (Session::has('mensaje'))
                  <div class="alert alert-success">
                   {{Session::get('mensaje')}}

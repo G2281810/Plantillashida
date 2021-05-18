@@ -35,11 +35,9 @@
                 <div class="x_panel">
                     <h1>REPORTE PACIENTES</h1>
                      <br>
-                  <div>
+                  <div align="left">
                     <a href="{{route('altapacientes')}}"><button type="button" class="btn btn-success" >Nuevo paciente</button></a>
-                 
-                  <br>
-                  <br>
+                  
                   @if (Session::has('mensaje'))
                  <div class="alert alert-success">
                   {{Session::get('mensaje')}}

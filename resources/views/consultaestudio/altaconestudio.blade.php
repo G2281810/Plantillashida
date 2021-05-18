@@ -3,7 +3,7 @@
 <div class="right_col" role="main">
     <div class="control">
         <h1>ALTA CONSULTA ESTUDIOS</h1>
-        <form action = "{{route('guardarconestudio')}}" method = "POST">
+        <form action = "{{route('guardarconestudio')}}" method = "POST" enctype="multipart/form-data">
          {{csrf_field()}}
          <div class="x_content">
              <!--ID CCONSULTA ESTUDIO -->
@@ -58,7 +58,7 @@
               <select class="select2_group form-control"name="idpaciente" id="idpaciente">
                 <option disabled="disabled" selected="selected" >Selecciona el paciente</option>
                 @foreach($paciente as $paciente)
-                  <option value="{{$paciente['idpaciente']}}">{{$paciente['nombre']}} {{$paciente['apellidop']}}</option>
+                  <option value="{{$paciente['idpaciente']}}">{{$paciente['nombre']}} {{$paciente['apellidop']}} {{$paciente['apellidom']}}</option>
                 @endforeach
               </select>
               @if($errors->first('idpaciente'))
@@ -102,12 +102,12 @@
          
           <!--archivo -->
            <div class="field item form-group">
-            <label class="col-form-label col-md-5 col-sm-5  label-align">Imagen del estudio:<span
+            <label class="col-form-label col-md-5 col-sm-5  label-align">Archivo del estudio:<span
                 class="required"></span></label>
             <div class="col-md-5 col-sm-5">
-              <input type="file" name="img" id="img" class="form-control" placeholder="" tabindex="5">
-              @if($errors->first('img'))
-               <p class='text-danger'>{{$errors->first('img')}}</p>
+              <input type="file" name="archivo" id="archivo" class="form-control" placeholder="" tabindex="5">
+              @if($errors->first('archivo'))
+               <p class='text-danger'>{{$errors->first('archivo')}}</p>
               @endif
             </div>
           </div>

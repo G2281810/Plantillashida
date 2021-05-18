@@ -100,7 +100,7 @@ class PacientesController extends Controller
   public function modificapacientes($idpaciente){
     $consulta = pacientes::withTrashed()->join('tipo_sangres','pacientes.idtipossan','=','tipo_sangres.idtipossan')
     ->select('pacientes.idpaciente','pacientes.nombre','pacientes.apellidop','pacientes.apellidom','pacientes.edad',
-         'pacientes.telefono','pacientes.sexo','pacientes.correo','tipo_sangres.tipo as tipossan','pacientes.preguntaale','pacientes.alergias',)
+         'pacientes.telefono','pacientes.sexo','pacientes.correo','tipo_sangres.idtipossan','tipo_sangres.tipo as tipossan','pacientes.preguntaale','pacientes.alergias',)
     ->where('idpaciente',$idpaciente)
     ->get();
     $tipo_sangres = tipo_sangres::all();

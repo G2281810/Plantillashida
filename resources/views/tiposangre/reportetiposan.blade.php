@@ -35,11 +35,10 @@
                 <div class="x_panel">
                     <h1>REPORTE TIPO SANGRE</h1>
                      <br>
-                  <div>
+                  <div align="left">
                     <a href="{{route('altatiposangre')}}"><button type="button" class="btn btn-success" >Nuevo tipo sangre</button></a>
                  
-                  <br>
-                  <br>
+                  
                   @if (Session::has('mensaje'))
                  <div class="alert alert-success">
                   {{Session::get('mensaje')}}
@@ -49,7 +48,7 @@
                   {{Session::get('mensaje2')}}
                   @endif
                  </div>
-                 </div>
+                 
                     
                     <table class="table table-dark">
                       <thead>
@@ -144,8 +143,8 @@
                         </tbody>
                       </table>
 -->
+              </div>
                 </div>
-            
         </div>
 <style>
   .boton{

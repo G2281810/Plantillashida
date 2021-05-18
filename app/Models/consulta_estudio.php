@@ -19,6 +19,6 @@ class consulta_estudio extends Model
       'fecha_estudio',
       'hora_estudio',
       'obervaciones',
-      'archivo_adjunto',
+      'archivo',
     ];
 }

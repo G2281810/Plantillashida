@@ -35,11 +35,12 @@
                 <div class="x_panel">
                     <h1>REPORTE CONSULTA ESTUDIOS</h1>
                      <br>
-                  <div>
-                    <a href="{{route('altaconestudio')}}"><button type="button" class="btn btn-success" >Nuevo Estudio</button></a>
-                 
-                  <br>
-                  <br>
+                  <div align="left">
+                    <a href="{{route('altaconestudio')}}">
+                       <button type="button" class="btn btn-success">Nueva consulta Estudio</button>
+                    </a>
+                  
+                    
                   @if (Session::has('mensaje'))
                  <div class="alert alert-success">
                   {{Session::get('mensaje')}}
@@ -54,6 +55,7 @@
                              <th scope="col">Estudio</th>
                              <th scope="col">Fecha del estudio</th>
                              <th scope="col">Hora del estudio</th>
+                             <th scope="col">Imagen radiografia</th>
                              <th scope="col">Operaciones</th>
                         </tr>
                       </thead>
@@ -66,7 +68,9 @@
                <td>{{$c->estudio}}</td>
                <td>{{$c->fecha_estudio}}</td>
                <td>{{$c->hora_estudio}}</td>
-               
+               <td><img src="{{asset('archivos/'. $c->archivo)}}" height="50" width="50" ><br>
+               <a href="{{route('download',[$c->archivo])}}"><img src="./production/images/iconodes.png" height="30" width="30"></a>
+               </td>
 
                <td>
                 <a href="{{route('modificaconestudio',['idces'=>$c->idces])}}"> 

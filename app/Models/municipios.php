@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Softdeletes;
 
 
-class especialidad extends Model
+class municipios extends Model
 {
-    use Softdeletes;
     use HasFactory;
-    protected $primaryKey='idesp';
-    protected $fillable=
-    [
-      'especialidad'
-    ];
+    use Softdeletes;
+    protected $primaryKey='idmun';
+    protected $fillable=['idmun','nombre'];
 }

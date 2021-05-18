@@ -35,11 +35,10 @@
                 <div class="x_panel">
                     <h1>REPORTE ESTUDIOS</h1>
                      <br>
-                  <div>
+                  <div align="left">
                     <a href="{{route('altaestudios')}}"><button type="button" class="btn btn-success" >Nuevo Estudio</button></a>
                  
-                  <br>
-                  <br>
+                  
                   @if (Session::has('mensaje'))
                  <div class="alert alert-success">
                   {{Session::get('mensaje')}}

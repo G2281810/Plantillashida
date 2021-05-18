@@ -80,8 +80,8 @@ return [
         'string' => 'El campo :attribute no debería tener más de :max caracteres.',
         'array' => 'El campo :attribute no debería tener más de :max elementos.',
     ],
-    'mimes' => 'El campo :attribute debe ser un archivo de tipo: :values.',
-    'mimetypes' => 'El campo :attribute debe ser un archivo de tipo: :values.',
+    'mimes' => 'El campo  debe ser un archivo de tipo imagen o pdf.',
+    'mimetypes' => 'El campo  debe ser un archivo de tipo imagen o pdf.',
     'min' => [
         'numeric' => 'El campo :attribute must be at least :min.',
         'file' => 'El campo :attribute must be at least :min kilobytes.',

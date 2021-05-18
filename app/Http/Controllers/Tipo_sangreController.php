@@ -28,14 +28,14 @@ class Tipo_sangreController extends Controller
     public function guardartiposan(Request $request)
     {
         $this->validate($request,[
-             'idtiposan'=>'required|numeric',
+             
              'tipos'=>'required|regex:/^[A-Z][A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü,+,-]+$/',
          ]);
         $tipo_sangres = new tipo_sangres;
-        $tipo_sangres ->idtipossan=$request->idtiposan;
+        $tipo_sangres ->idtipossan=$request->idtipossan;
         $tipo_sangres->tipo=$request->tipos;
         $tipo_sangres ->save();
-      Session::flash('mensaje', "El tipo de sangre $request->nombre $request->apellidop ha sido dado de alta correctamente.");
+      Session::flash('mensaje', "El tipo de sangre  ha sido dado de alta correctamente.");
       return redirect()->route('reportetiposan');
     }
     public function reportetiposan()

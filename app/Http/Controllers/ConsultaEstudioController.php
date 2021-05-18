@@ -41,8 +41,20 @@ class ConsultaEstudioController extends Controller
          'fechaestudio'=>'required',
          'horaestudio'=>'required',
          'obser'=>'regex:/^[A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
-         //'img'=>'image|mimes:gif,jpg,png'
+         'archivo'=>'|mimes:gif,jpg,png'
         ]);
+          $file = $request->file('archivo');
+          if($file<>"")
+          {
+          $archivo = $file->getClientOriginalName();
+          $archivo2 = $request->idces . $archivo;
+         
+          \Storage::disk('local')->put($archivo2, \File::get($file));
+      
+          }
+          else{
+            $archivo2 = "sinarchivo.png";
+          }
         $consulta_estudio = new consulta_estudio;
         $consulta_estudio ->idces=$request->idconestudio;
         $consulta_estudio ->idconsulta=$request->idcon;
@@ -50,6 +62,7 @@ class ConsultaEstudioController extends Controller
         $consulta_estudio ->idpaciente=$request->idpaciente;
         $consulta_estudio ->fecha_estudio=$request->fechaestudio;
         $consulta_estudio ->hora_estudio = $request->horaestudio;
+        $consulta_estudio ->archivo = $archivo2;
         $consulta_estudio ->observaciones=$request->obser;
         $consulta_estudio ->save();
         Session::flash('mensaje', "El Estudio ha sido dado de alta correctamente.");
@@ -59,7 +72,7 @@ class ConsultaEstudioController extends Controller
     {
       $consulta = consulta_estudio::withTrashed()->join('estudios','consulta_estudios.idestudio','=','estudios.idestudio')
           ->join('pacientes','consulta_estudios.idpaciente','=','pacientes.idpaciente')
-          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.deleted_at', 'consulta_estudios.hora_estudio','estudios.nombre as estudio','pacientes.apellidop','pacientes.apellidom','pacientes.nombre as paciente')
+          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.deleted_at','consulta_estudios.archivo', 'consulta_estudios.hora_estudio','estudios.nombre as estudio','pacientes.apellidop','pacientes.apellidom','pacientes.nombre as paciente')
           ->orderBy('pacientes.nombre')
           ->get();
           return view('consultaestudio.reporteconsultaes')->with('consulta',$consulta);
@@ -90,18 +103,19 @@ class ConsultaEstudioController extends Controller
      $consulta = consulta_estudio::withTrashed()->join('estudios','consulta_estudios.idestudio','=','estudios.idestudio')
           ->join('pacientes','consulta_estudios.idpaciente','=','pacientes.idpaciente')
           ->join('consultas','consulta_estudios.idconsulta','=','consultas.idconsulta')
-          ->select('consulta_estudios.idces','consulta_estudios.fecha_estudio','consulta_estudios.observaciones',
+          ->select('consulta_estudios.idces','consulta_estudios.archivo','consulta_estudios.fecha_estudio','consulta_estudios.observaciones',
            'consulta_estudios.hora_estudio',
-          'estudios.nombre as estudio','pacientes.apellidop','pacientes.apellidom','pacientes.nombre as paciente','consultas.idconsulta as consultas')
+          'estudios.nombre as estu','pacientes.apellidop','pacientes.apellidom','pacientes.nombre as paci',
+          'consultas.idconsulta as con','consulta_estudios.idconsulta','consulta_estudios.idestudio','consulta_estudios.idpaciente')
     ->where('idces',$idces)
     ->get();
-    $paciente = pacientes::all();
+    $pacientes = pacientes::all();
     $consultas = consulta::all();
-    $estudio = estudio::all();
+    $estudios = estudio::all();
     return view('consultaestudio.modificaconestudio')
     ->with('consulta',$consulta[0])
-    ->with('pacientes', $paciente)
-    ->with('estudios',$estudio)
+    ->with('pacientes', $pacientes)
+    ->with('estudios',$estudios)
     ->with('consultas',$consultas);
 
 
@@ -109,25 +123,40 @@ class ConsultaEstudioController extends Controller
   }
    public function guardacambiosconestudio(Request $request){
     $this->validate($request,[
-      
-      'idcon'=>'required',
-      'idestudio'=>'required',
-      'idpaciente'=>'required',
+    
       'fechaestudio'=>'required',
       'horaestudio'=>'required',
       'obser'=>'regex:/^[A-Z,a-z, ,á,é,i,ó,ú,ü,Á,É,Í,Ó,Ú,Ü]+$/',
+      'archivo'=>'|mimes:gif,jpg,png'
     ]);
+    $file = $request->file('archivo');
+          if($file<>"")
+          {
+          $archivo = $file->getClientOriginalName();
+          $archivo2 = $request->idces . $archivo;
+         
+          \Storage::disk('local')->put($archivo2, \File::get($file));
+          }
+         
       $consulta_estudio = consulta_estudio::withTrashed()->find($request->idces);
       $consulta_estudio ->idces=$request->idces;
-      $consulta_estudio ->idconsulta=$request->idcon;
+      $consulta_estudio ->idconsulta=$request->idconsulta;
       $consulta_estudio ->idestudio=$request->idestudio;
       $consulta_estudio ->idpaciente=$request->idpaciente;
       $consulta_estudio ->fecha_estudio=$request->fechaestudio;
       $consulta_estudio ->hora_estudio = $request->horaestudio;
+      if($file<>"")
+      {
+          $consulta_estudio ->archivo = $archivo2;
+      }
       $consulta_estudio ->observaciones=$request->obser;
       $consulta_estudio ->save();
     Session::flash('mensaje', " La consulta estudio ha sido modificada correctamente.");
     return redirect()->route('reporteconsultaes');
   }
+   public function download($img){
+      $pathtoFile = public_path().'//archivos/'. $img;
+      return response()->download($pathtoFile);
+    }
    
 }

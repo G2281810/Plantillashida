@@ -65,8 +65,8 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a a href="index"><i class="fa fa-home"></i> Inicio <!--<span class="fa fa-chevron-down"></span>--></a></li>
-                  <li><a href="reporteusuarios"><i class="fa fa-user"></i> Usuarios  <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a a href="{{route('index')}}"><i class="fa fa-home"></i> Inicio <!--<span class="fa fa-chevron-down"></span>--></a></li>
+                  <li><a href="{{route('reporteusuarios')}}"><i class="fa fa-user"></i> Usuarios  <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                
                       <li><a href="./production/formulario.html">Alta usuarios</a></li>
                       <li><a href="./production/formulario.html">Reporte usuarios</a></li>
@@ -74,7 +74,7 @@
                       <li><a href="./production/formulario.html">Modificación usuarios</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="reportepacientes"><i class="fa fa-user"></i>Pacientes  <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportepacientes')}}"><i class="fa fa-user"></i>Pacientes  <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta pacientes</a></li>
                       <li><a href="./production/formulario.html">Reporte pacientes</a></li>
@@ -82,7 +82,7 @@
                       <li><a href="./production/formulario.html">Modificación pacientes</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-user"></i>Odontologos <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportes_odontologos')}}"><i class="fa fa-user"></i>Odontologos <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta odontologos</a></li>
                       <li><a href="./production/formulario.html">Reporte odontologos</a></li>
@@ -90,7 +90,7 @@
                       <li><a href="./production/formulario.html">Modificación odontologos</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-calendar"></i>Consultas  <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{ route ('reporteconsultas') }}"><i class="fa fa-calendar"></i>Consultas  <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">            
                       <li><a href="./production/formulario.html">Alta consultas</a></li>
                       <li><a href="./production/formulario.html">Reporte consultas</a></li>
@@ -98,7 +98,7 @@
                       <li><a href="./production/formulario.html">Modificación consultas</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-navicon"></i>Municipios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportes_municipios')}}"><i class="fa fa-navicon"></i>Municipios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta municipios</a></li>
                       <li><a href="./production/formulario.html">Reporte municipios</a></li>
@@ -106,7 +106,7 @@
                       <li><a href="./production/formulario.html">Modificación municipios</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-navicon"></i>Especialidades <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportes_especialidades')}}"><i class="fa fa-navicon"></i>Especialidades <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta especialidades</a></li>
                       <li><a href="./production/formulario.html">Reporte especialidades</a></li>
@@ -114,7 +114,7 @@
                       <li><a href="./production/formulario.html">Modificación especialidades</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-navicon"></i>Status <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{ route ('reportestatus') }}"><i class="fa fa-navicon"></i>Status <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta Status</a></li>
                       <li><a href="./production/formulario.html">Reporte Status</a></li>
@@ -122,7 +122,7 @@
                       <li><a href="./production/formulario.html">Modificación Status</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="reportetiposan"><i class="fa fa-tint"></i>Tipo de sangre <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportetiposan')}}"><i class="fa fa-tint"></i>Tipo de sangre <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta tipo de sangre</a></li>
                       <li><a href="./production/formulario.html">Reporte tipo de sangre</a></li>
@@ -130,7 +130,7 @@
                       <li><a href="./production/formulario.html">Modificación tipo de sangre</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-edit"></i>Tratamientos <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{ route ('reportetratamientos') }}"><i class="fa fa-edit"></i>Tratamientos <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta tratamientos</a></li>
                       <li><a href="./production/formulario.html">Reporte tratamientos</a></li>
@@ -138,7 +138,7 @@
                       <li><a href="./production/formulario.html">Modificación tratamientos</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-eyedropper"></i>Material odontologico <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{ route ('reportemateriales') }}"><i class="fa fa-eyedropper"></i>Material odontologico <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta material odontologico</a></li>
                       <li><a href="./production/formulario.html">Reporte material odontologico</a></li>
@@ -146,7 +146,7 @@
                       <li><a href="./production/formulario.html">Modificación material odontologico</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-edit"></i>Medicamentos <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportes_medicamentos')}}"><i class="fa fa-edit"></i>Medicamentos <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta medicamentos</a></li>
                       <li><a href="./production/formulario.html">Reporte medicamentos</a></li>
@@ -154,7 +154,7 @@
                       <li><a href="./production/formulario.html">Modificación medicamentos</a></li>
                     </ul> -->
                   </li>
-                  <li><a><i class="fa fa-navicon"></i>Tipo medicamento <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportes_tipomedicamentos')}}"><i class="fa fa-navicon"></i>Tipo medicamento <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta tipo medicamento</a></li>
                       <li><a href="./production/formulario.html">Reporte tipo medicamento</a></li>
@@ -162,7 +162,7 @@
                       <li><a href="./production/formulario.html">Modificación tipo medicamento</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="reportetipousuario"><i class="fa fa-navicon"></i>Tipo usuarios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reportetipousuario')}}"><i class="fa fa-navicon"></i>Tipo usuarios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta tipo usuarios</a></li>
                       <li><a href="./production/formulario.html">Reporte tipo usuarios</a></li>
@@ -170,7 +170,7 @@
                       <li><a href="./production/formulario.html">Modificación tipo usuarios</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="reporteconsultaes"><i class="fa fa-info-circle"></i>Consulta estudios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reporteconsultaes')}}"><i class="fa fa-info-circle"></i>Consulta estudios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                    
                       <li><a href="./production/formulario.html">Alta consulta estudios</a></li>
                       <li><a href="./production/formulario.html">Reporte consulta estudios</a></li>
@@ -178,7 +178,7 @@
                       <li><a href="./production/formulario.html">Modificación consulta estudios</a></li>
                     </ul> -->
                   </li>
-                  <li><a href="reporteestudio"><i class="fa fa-file-text"></i>Estudios <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('reporteestudio')}}"><i class="fa fa-file-text"></i>Estudios <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                      
                       <li><a href="./production/formulario.html">Alta estudios</a></li>
                       <li><a href="./production/formulario.html">Reporte estudios</a></li>
@@ -229,7 +229,7 @@
                         <span>Settings</span>
                       </a>
                   <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="{{route('login')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
 

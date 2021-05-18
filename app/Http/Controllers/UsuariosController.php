@@ -88,7 +88,7 @@ class UsuariosController extends Controller
      $consulta = usuarios::withTrashed()->join('tipo_usuarios','usuarios.idtipo_u','=','tipo_usuarios.idtipo_u')
           ->select('usuarios.idusuario','usuarios.nombre','usuarios.apellidom','tipo_usuarios.tipo as tipo',
           'usuarios.apellidop',
-          'usuarios.telefono','usuarios.edad','usuarios.sexo', 'usuarios.correo')
+          'usuarios.telefono','usuarios.edad','usuarios.sexo', 'usuarios.correo','usuarios.idtipo_u')
     ->where('idusuario',$idusuario)
     ->get();
     $tipo_usuarios = tipo_usuario::all();
