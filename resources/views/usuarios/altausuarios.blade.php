@@ -18,6 +18,17 @@
              @endif
            </div>
           </div>
+          <!--Matricula del usuario -->
+           <div class="field item form-group">
+            <label class="col-form-label col-md-5 col-sm-5  label-align">Matricula del usuario:<span
+                class="required">*</span></label>
+            <div class="col-md-5 col-sm-5">
+              <input type="text" name="numusuario" id="numusuario" value="{{old('numusuario')}}" class="form-control" placeholder="" tabindex="5">
+              @if($errors->first('numusuario'))
+               <p class='text-danger'>{{$errors->first('numusuario')}}</p>
+              @endif
+            </div>
+          </div>
            <!--nombre -->
            <div class="field item form-group">
             <label class="col-form-label col-md-5 col-sm-5  label-align">Nombre:<span

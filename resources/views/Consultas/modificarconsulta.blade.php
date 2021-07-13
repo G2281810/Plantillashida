@@ -17,7 +17,7 @@
               <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="idconsulta" value="{{$consulta->idconsulta}}"
                 readonly="readonly"/>
                 @if($errors->first('idconsulta'))
-                <p class="text-danger">{{$errors->first('idconsulta')}}</ide>
+                <p class="text-danger">{{$errors->first('idconsulta')}}</p>
                 @endif
             </div>
           </div>

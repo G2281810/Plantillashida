@@ -7,6 +7,8 @@ use App\Models\consulta;
 use App\Models\status;
 use App\Models\pacientes;
 use App\Models\odontologos;
+use App\Models\especialidades;
+
 use Session;
 
 class ConsultasController extends Controller
@@ -25,16 +27,19 @@ class ConsultasController extends Controller
     $statuses = status::orderBy('nombre')->get();
     $pacientes = pacientes::orderBy('nombre')->get();
     $odontologos = odontologos::orderBy('nombre')->get();
+    $especialidades = especialidades::orderBy('id')->get();
 
     return view('Consultas/altaconsulta')
           ->with('idsigue',$idsigue)
           ->with('statuses',$statuses)
           ->with('pacientes',$pacientes)
-          ->with('odontologos',$odontologos);
+          ->with('odontologos',$odontologos)
+          ->with('especialidades',$especialidades);
   }
 
   public function guardarconsulta(Request $request){
     $this->validate($request,[
+      'idesp'=>'required',
       'fecha_consulta' => 'required|date',
       'hora_consulta' => 'required|regex:/^[0-9]+[:][0-9]+[ ][a-z]{2}$/',
       'peso' => 'required|regex:/^[0-9]+[.][0-9]+[ ][k][g]$/',
@@ -45,6 +50,7 @@ class ConsultasController extends Controller
     $consultas->idconsulta = $request->idconsulta;
     $consultas->idpaciente = $request->idpaciente;
     $consultas->idodo = $request->idodo;
+    $consultas->idesp = $request->idesp;
     $consultas->fecha_consulta = $request->fecha_consulta;
     $consultas->hora_consulta = $request->hora_consulta;
     $consultas->peso = $request->peso;
@@ -69,7 +75,7 @@ class ConsultasController extends Controller
   }
 
   public function desactivaconsulta($idconsulta){
-    $consultas = consultas::find($idconsulta);
+    $consultas = consulta::find($idconsulta);
     $consultas->delete();
 
     Session::flash('mensaje',"La consulta ha sido desactivada correctamente");

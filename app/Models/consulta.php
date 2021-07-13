@@ -15,6 +15,7 @@ class consulta extends Model
     [
       'idpaciente',
       'idodo',
+      'idesp',
       'fecha_consulta',
       'hora_consulta',
       'peso',

@@ -68,13 +68,13 @@
                               <td>
 
                               <a href="{{route('modificarconsulta',['idconsulta'=>$c->idconsulta])}}"
-                              <button type="button" class="btn btn-info">Modificar</button>
+                              <button type="button" class="btn btn-warning">Modificar</button>
                               </a>
                               @if($c->deleted_at)
                               <a href="{{route('activarconsulta',['idconsulta'=>$c->idconsulta])}}"
-                              <button type="button" class="btn btn-warning">Activar</button>
+                              <button type="button" class="btn btn-success">Activar</button>
                               <a href="{{route('borraconsulta',['idconsulta'=>$c->idconsulta])}}"
-                              <button type="button" class="btn btn-secondary">Borrar</button>
+                              <button type="button" class="btn btn-danger">Borrar</button>
                               </a>
                               @else
                               <a href="{{route('desactivaconsulta',['idconsulta'=>$c->idconsulta])}}"

@@ -17,7 +17,7 @@ use App\Http\Controllers\TipoMedicamentosController;
 use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\OdontologosController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\UsuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,14 +43,14 @@ Route::post('/guardacambiospaciente',[PacientesController::class,'guardacambiosp
 
 
                                 /*Usuarios*/
-Route::get('/altausuarios',[UsuariosController::class,'altausuarios'])->name('altausuarios');
-Route::post('/guardarusuario',[UsuariosController::class,'guardarusuario'])->name('guardarusuario');
-Route::get('/reporteusuarios',[UsuariosController::class,'reporteusuarios'])->name('reporteusuarios');
-Route::get('/desactivausuario/{idusuario}',[UsuariosController::class,'desactivausuario'])->name('desactivausuario');
-Route::get('/activausuario/{idusuario}',[UsuariosController::class,'activausuario'])->name('activausuario');
-Route::get('/borrarusuario/{idusuario}',[UsuariosController::class,'borrarusuario'])->name('borrarusuario');
-Route::get('/modificausuario/{idusuario}',[UsuariosController::class,'modificausuario'])->name('modificausuario');
-Route::get('/guardacambiosusuario',[UsuariosController::class,'guardacambiosusuario'])->name('guardacambiosusuario');
+//Route::get('/altausuarios',[UsuariosController::class,'altausuarios'])->name('altausuarios');
+//Route::post('/guardarusuario',[UsuariosController::class,'guardarusuario'])->name('guardarusuario');
+//Route::get('/reporteusuarios',[UsuariosController::class,'reporteusuarios'])->name('reporteusuarios');
+//Route::get('/desactivausuario/{idusuario}',[UsuariosController::class,'desactivausuario'])->name('desactivausuario');
+//Route::get('/activausuario/{idusuario}',[UsuariosController::class,'activausuario'])->name('activausuario');
+//Route::get('/borrarusuario/{idusuario}',[UsuariosController::class,'borrarusuario'])->name('borrarusuario');
+//Route::get('/modificausuario/{idusuario}',[UsuariosController::class,'modificausuario'])->name('modificausuario');
+//Route::get('/guardacambiosusuario',[UsuariosController::class,'guardacambiosusuario'])->name('guardacambiosusuario');
 
 
                                 //Tipo Usuarios//
@@ -102,7 +102,7 @@ route::get('desactivaconsulta/{idconsulta}',[ConsultasController::class,'desacti
 route::get('activarconsulta/{idconsulta}',[ConsultasController::class,'activarconsulta'])->name('activarconsulta');
 route::get('borraconsulta/{idconsulta}',[ConsultasController::class,'borraconsulta'])->name('borraconsulta');
 route::get('modificarconsulta/{idconsulta}',[ConsultasController::class,'modificarconsulta'])->name('modificarconsulta');
-route::post('guardacambios',[ConsultasController::class,'guardacambios'])->name('guardacambios');
+route::post('guardacambioscon',[ConsultasController::class,'guardacambioscon'])->name('guardacambioscon');
 
 ///// Catalogo Status /////
 route::get('altastatus',[StatusController::class,'altastatus'])->name('altastatus');
@@ -181,12 +181,11 @@ Route::get('/alta_odontologos',[OdontologosController::class,'alta_odontologos']
 Route::post('/guardar_odontologos',[OdontologosController::class,'guardar_odontologos'])->name('guardar_odontologos');
 Route::get('/reportes_odontologos',[OdontologosController::class,'reportes_odontologos'])->name('reportes_odontologos');
 Route::get('/modifica_odontologos/{idodo}',[OdontologosController::class,'modifica_odontologos'])->name('modifica_odontologos');
-Route::post('/cambio_odontologos',[OdontologosController::class,'cambio_odontologos'])->name('cambio_odontologos');
 Route::get('/activar_odontologos/{idodo}',[OdontologosController::class,'activar_odontologos'])->name('activar_odontologos');
 Route::get('/desactivar_odontologos/{idodo}',[OdontologosController::class,'desactivar_odontologos'])->name('desactivar_odontologos');
 Route::get('/eliminar_odontologos/{idodo}',[OdontologosController::class,'eliminar_odontologos'])->name('eliminar_odontologos');
 Route::get('/descarga_imagen/{img}',[OdontologosController::class,'descarga_imagen'])->name('descarga_imagen');
-
+Route::post('/cambio_odontologos',[OdontologosController::class,'cambio_odontologos'])->name('cambio_odontologos');
 
 
 //Login//
@@ -196,3 +195,20 @@ Route::get('/index',[PacientesController::class,'index'])->name('index');
 Route::get('/menuprincipal',[PacientesController::class,'index'])->name('index');
 Route::get('/eloquent',[PacientesController::class,'eloquent'])->name('eloquent');
 Route::get('/reporte',[PacientesController::class, 'reporte'])->name('reporte');
+
+
+//------------------DATATABLES--------------------------------------//
+Route::name('usuarios')->get('/controlusuarios',[UsuariosController::class,'index']);
+Route::name('editar')->get('editar/{id}',[UsuariosController::class,'edit']);
+Route::name('store')->post('store/',[UsuariosController::class,'store']);
+Route::name('destroy')->delete('destroy/{id}',[UsuariosController::class,'destroy']);
+
+
+//-------------------PDF--------------------------------//
+Route::name('pdfusuarios')->get('pdfusuarios',[UsuariosController::class,'PdfUsuarios']);
+
+
+////----------------------------EXCEL--------------------//
+Route::name('export')->get('export',[UsuariosController::class,'export']);
+Route::name('import')->post('import',[UsuariosController::class,'import']);
+

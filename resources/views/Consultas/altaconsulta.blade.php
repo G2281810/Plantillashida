@@ -45,7 +45,20 @@
               </select>
             </div>
           </div>
-
+          <!-----------------------ESPECIALIDAD ODONTOLOGO------------------------->
+          <div class="field item form-group">
+            <label class="col-form-label col-md-5 col-sm-5 label-align">Especialidad<span
+                class="text-danger">*</span></label>
+            <div class="col-md-5 col-sm-5 ">
+              <select name= "idesp" class="select2_group form-control">
+                <option selected=""> Seleccione un opción</option>
+                @foreach($especialidades as $esp)
+                <option value="{{$esp->idesp}}">{{$esp->especialidades}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <!------------------------------------------------------------------------>
           <div class="field item form-group">
             <label class="col-form-label col-md-5 col-sm-5  label-align">Fecha de consulta:<span
                 class="text-danger">*</span></label>

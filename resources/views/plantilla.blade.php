@@ -5,13 +5,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>My-dentis</title>
-
-    <!-- Bootstrap -->
+    @yield('css')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css"/>
+    
+    
+    
+    
+        <!-- Bootstrap -->
     <link rel="stylesheet" href="{{URL::asset('./vendors/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{URL::asset('./vendors/font-awesome/css/font-awesome.min.css')}}">
@@ -66,7 +75,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a a href="{{route('index')}}"><i class="fa fa-home"></i> Inicio <!--<span class="fa fa-chevron-down"></span>--></a></li>
-                  <li><a href="{{route('reporteusuarios')}}"><i class="fa fa-user"></i> Usuarios  <!--<span class="fa fa-chevron-down"></span>--></a>
+                  <li><a href="{{route('usuarios')}}"><i class="fa fa-user"></i> Usuarios  <!--<span class="fa fa-chevron-down"></span>--></a>
                     <!-- <ul class="nav child_menu">                
                       <li><a href="./production/formulario.html">Alta usuarios</a></li>
                       <li><a href="./production/formulario.html">Reporte usuarios</a></li>
@@ -362,4 +371,100 @@
     <script src="./build/js/custom.min.js"></script>
 	
   </body>
+  @yield('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+  
+<script type="text/javascript">
+    $(function(){
+      $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+          });
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "",
+            columns:[
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'numusuario', name: 'numusuario'},
+                {data: 'nombre', name: 'nombre'},
+                {data: 'apellidop', name: 'apellidop'},
+                {data: 'sexo', name: 'sexo'},
+                {data: 'telefono', name: 'telefono'},
+                {data: 'correo', name: 'correo'},
+                {data: 'tipou', name: 'tipou'},
+                {data: 'otros',name: 'otros',orderable:false, searchable:false},
+            ]
+        });
+        ///////Nuevo Usuario ///////
+         $('#createNewCustomer').click(function(){
+              $('#saveBtn').val("create-Customer");
+              $('#Customer_id').val("");
+              $('#CustomerForm').trigger("reset");
+              $('#modelHeading').html("Crear Nuevo Ususario");
+              $('#ajaxModel').modal("show");
+            });
+          
+        ///////////Modificar usuarios////////////77
+        $('body').on('click', '.editCustomer', function(){
+                var id = $(this).data('id');
+                // console.log(id);
+                $.get("editar/" + id, function (data){
+                    $('#modelHeading').html("Editar Customer");
+                    $('#saveBtn').val("edit-user");
+                    $('#ajaxModel').modal("show");
+                    $('#Customer_id').val(data.id);
+                    $('#numusuario').val(data.numusuario);
+                    $('#nombre').val(data.nombre);
+                    $('#apellidop').val(data.apellidop);
+                    $('#sexo').val(data.sexo);
+                    $('#telefono').val(data.telefono);
+                    $('#correo').val(data.correo);
+                    $('#tipou').val(data.tipou);
+                })
+            });
+        ////////////////////Salvar Usuario///////////////////
+
+                  $('#saveBtn').click(function(e){
+                    e.preventDefault();
+                  $(this).html('Enviando...');
+                          $.ajax({
+                            data: $('#CustomerForm').serialize(),
+                            url: "{{ route('store') }}",
+                            type: "POST",
+                            dataType: "json",
+                            success: function(data){
+                              $('#CustomerForm').trigger('reset');
+                              $('#ajaxModel').modal('hide');
+                              table.draw();
+                            },
+                            error: function(data){
+                              console.log('Error: ', data);
+                              $('#saveBtn').html('Guardar Cambios');
+                            }
+                          });
+                  });
+          // ----------------- Delete -------------
+          $('body').on('click', '.deleteCustomer', function(){
+              var id = $(this).data("id");
+              if (confirm("Esta seguro de querer borrar el registro...?")) {
+                $.ajax({
+                  type: "DELETE",
+                  url: "{{ url('destroy') }}"+"/"+id,
+                  success: function(data){
+                    table.draw();
+                  },
+                  error: function(data){
+                    console.log("Error: ", data);
+                  }
+                });
+              }
+              else{}
+            });
+
+          });
+        </script>
 </html>

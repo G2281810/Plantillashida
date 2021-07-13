@@ -18,6 +18,9 @@ class Consultas extends Migration
         $table->integer('idodo')->unsigned();
         $table->foreign('idodo')->references('idodo')->on('odontologos');
 
+        $table->integer('idesp')->unsigned();
+        $table->foreign('idesp')->references('idesp')->on('especialidades');
+
         $table->string('fecha_consulta',20);
         $table->string('hora_consulta',20);
         $table->string('peso',20);
@@ -43,4 +46,3 @@ class Consultas extends Migration
         Schema::drop('consultas');
     }
 }
-
